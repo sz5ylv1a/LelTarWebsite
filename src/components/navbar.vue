@@ -16,8 +16,8 @@ export default {
 		try {
 			if (!loggedIn) {
 				document.getElementById("account-section").innerHTML = `
-				<button class="btn btn-outline-secondary">Login</button>
-				<button class="btn btn-outline-success">Register</button>`
+				<a class="btn btn-outline-secondary" role="button" href="/login">Login</a>
+				<a class="btn btn-outline-success" role="button" href="/register">Register</a>`
 			}
 		}
 		catch (error) {

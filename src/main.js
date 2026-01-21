@@ -10,6 +10,9 @@ import Changelog from './components/pages/Changelog.vue';
 import Downloads from './components/pages/Downloads.vue';
 import Leaderboards from './components/pages/Leaderboards.vue';
 
+import Login from './components/pages/login.vue';
+import Register from './components/pages/Register.vue';
+
 const router = createRouter({
 	history: createWebHistory(),
 	routes: [
@@ -17,7 +20,10 @@ const router = createRouter({
 		{ path: '/about', name: 'About', component: About },
 		{ path: '/changelog', name: 'Changelog', component: Changelog },
 		{ path: '/downloads', name: 'Downloads', component: Downloads },
-		{ path: '/leaderboards', name: 'Leaderboards', component: Leaderboards }
+		{ path: '/leaderboards', name: 'Leaderboards', component: Leaderboards },
+
+		{ path: '/login', name: 'login', component: Login },
+		{ path: '/register', name: 'Register', component: Register }
 	]
 });
 

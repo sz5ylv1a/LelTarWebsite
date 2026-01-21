@@ -5,8 +5,8 @@ var checksumLinux = "75d90693b6209e2d649271c19be34bd6402afcfd16d342197dbf16a5fc4
 </script>
 
 <template>
-    <div class="container-xxl">
-        <h1>Downloads</h1>
+	<div class="container-xxl">
+		<h1>Downloads</h1>
 		<p>This download page is for all possible downloads. Make sure you pick the right platform and CPU architecture. <i>(ARM64 is not supported, this is an x86 household)</i></p>
 		<hr />
 		<h2 id="windows">Windows</h2>
@@ -44,7 +44,7 @@ var checksumLinux = "75d90693b6209e2d649271c19be34bd6402afcfd16d342197dbf16a5fc4
 			<button type="button" class="btn btn-outline-secondary">.zip</button>
 			<button type="button" class="btn btn-outline-secondary">.tar.gz</button>
 		</div>
-    </div>
+	</div>
 </template>
 
 <style scoped></style>
