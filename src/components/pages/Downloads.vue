@@ -41,8 +41,9 @@ var checksumLinux = "75d90693b6209e2d649271c19be34bd6402afcfd16d342197dbf16a5fc4
 		<h2 id="sourcecode">Source Code</h2>
 		<p>Want the source code for this game? Including every single asset and janky code?</p>
 		<div class="d-flex gap-1 mb-1">
-			<button type="button" class="btn btn-outline-secondary">.zip</button>
-			<button type="button" class="btn btn-outline-secondary">.tar.gz</button>
+			<a role="button" class="btn btn-secondary">.zip</a>
+			<a role="button" class="btn btn-secondary">.tar.gz</a>
+			<a role="button" class="btn btn-outline-secondary" href="https://github.com/LohinSys/LelTarGame" target="_blank">GitHub Repository</a>
 		</div>
 	</div>
 </template>

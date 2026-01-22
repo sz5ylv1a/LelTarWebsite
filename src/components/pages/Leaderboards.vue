@@ -13,12 +13,13 @@ export default {
 	async mounted() {
 		async function fetchFromApi(targetUrl, whereToOutput) {
 			try {
-				let response = await fetch(targetUrl);
+				const response = await fetch(targetUrl);
 				if (!response.ok) {
 					throw new Error("Response status:",response.status);
 				}
 				whereToOutput = await response.json();
-				console.log("Fetched",targetUrl);
+				console.debug("Fetched",targetUrl);
+				console.debug(whereToOutput);
 			}
 			catch (error) {
 				console.error(`An error has occured trying to fetch "${targetUrl}":\n${error}`);

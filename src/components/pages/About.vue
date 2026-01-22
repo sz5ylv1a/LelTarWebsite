@@ -1,4 +1,6 @@
-<script setup lang="js"></script>
+<script setup lang="js">
+
+</script>
 
 <template>
 	<div class="container-xxl">
@@ -25,32 +27,32 @@
 					<tr>
 						<th scope="row">Move</th>
 						<td><kbd>⬅</kbd> <kbd>⬇</kbd> <kbd>⬆</kbd> <kbd>➡</kbd> / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / <kbd>Numpad1</kbd> <kbd>Numpad2</kbd> <kbd>Numpad3</kbd> <kbd>Numpad5</kbd></td>
-						<td>D-pad / Left Joystick</td>
-						<td>D-pad / Left Joystick (L3)</td>
+						<td><span class="xbox-btns">S</span> / <span class="xbox-btns">&lt;</span></td>
+						<td><span class="ps-btns">S</span> / <span class="ps-btns">&lt;</span></td>
 					</tr>
 					<tr>
 						<th scope="row">Shoot</th>
 						<td><kbd>Y</kbd> / <kbd>Z</kbd></td>
-						<td>A</td>
-						<td>Cross</td>
+						<td class="xbox-btns">a</td>
+						<td class="ps-btns">x</td>
 					</tr>
 					<tr>
 						<th scope="row">Focus</th>
 						<td><kbd>LShift</kbd> / <kbd>RShift</kbd></td>
-						<td>LB / RB</td>
-						<td>L1 / R1</td>
+						<td><span class="xbox-btns">&lbrack;</span> / <span class="xbox-btns">&rbrack;</span> &bull; <span class="switch-btns">&lbrack;</span> / <span class="switch-btns">&rbrack;</span></td>
+						<td><span class="ps-btns">&lbrack;</span> / <span class="ps-btns">&rbrack;</span></td>
 					</tr>
 					<tr>
 						<th scope="row">Bomb</th>
 						<td><kbd>X</kbd></td>
-						<td>B</td>
-						<td>Circle</td>
+						<td><span class="xbox-btns">b</span></td>
+						<td><span class="ps-btns">c</span></td>
 					</tr>
 					<tr>
 						<th scope="row">Pause</th>
 						<td><kbd>Esc</kbd></td>
-						<td>Start / Menu</td>
-						<td>Start / Options</td>
+						<td>Start / <span class="xbox-btns">m</span></td>
+						<td>Start / <span class="ps-btns">o</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -58,7 +60,7 @@
 		<hr />
 		
 		<h2 id="technical-details">Technical details</h2>
-		<p>This game was made using <strong><a href="https://godotengine.org/" target="_blank">Godot Engine v4.5.1</a></strong> using the <strong>GDScript</strong> language. It supports native <strong>Vulkan</strong> rendering, with fallbacks for <strong>DirectX 12</strong> and <strong>OpenGL 3</strong> if not supported by the hardware.</p>
+		<p>This game was made using <strong><a href="https://godotengine.org/download/archive/#4.5.1" target="_blank">Godot Engine 4.5.1</a></strong> using the <strong>GDScript</strong> language. It supports native <strong>Vulkan</strong> rendering, with fallbacks for <strong>DirectX 12</strong> and <strong>OpenGL 3</strong> if not supported by the hardware.</p>
 		<p>Compatibility with <strong><a href="https://www.winehq.org/" target="_blank">Wine</a> and <a href="https://en.wikipedia.org/wiki/Proton_(software)" target="_blank">Proton</a></strong> should be quite good if you choose to play the game this way, especially on macOS.</p>
 		<h3 id="system-requirements">System requirements</h3>
 		<div class="container-fluid">
@@ -88,4 +90,26 @@
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@font-face {
+	font-family: "Xbox Buttons";
+	src: url(/res/fonts/xbox.otf);
+}
+@font-face {
+	font-family: "PlayStation Buttons";
+	src: url(/res/fonts/ps.otf);
+}
+@font-face {
+	font-family: "Switch Buttons";
+	src: url(/res/fonts/switch.otf);
+}
+.xbox-btns {
+	font-family: "Xbox Buttons";
+}
+.ps-btns {
+	font-family: "PlayStation Buttons";
+}
+.switch-btns {
+	font-family: "Switch Buttons";
+}
+</style>

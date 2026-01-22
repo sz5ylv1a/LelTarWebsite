@@ -4,12 +4,12 @@ import PageFooter from './components/page-footer.vue';
 </script>
 
 <template>
-	<navbar current-page="Home" logged-in="false" />
+	<navbar current-page="Home" :logged-in=false />
 	<div class="page-shit">
 		<div class="content mb-5">
 			<router-view />
 		</div>
-		<page-footer entity-name="LohinSys" f-year=2024 l-year=2026 />
+		<page-footer entity-name="LohinSys" :f-year=2024 :l-year=2026 />
 	</div>
 </template>
 

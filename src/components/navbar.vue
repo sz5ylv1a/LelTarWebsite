@@ -1,20 +1,20 @@
-<script lang="js">
-// defineProps({
-// 	currentPage: String,
-// 	loggedIn: Boolean,
-// })
+<script setup lang="js">
+defineProps({
+	currentPage: String,
+	loggedIn: Boolean,
+})
+</script>
 
+<script lang="js">
 export default {
 	data() {
 		return {
-			loggedIn: false
+			isLoggedIn: this.loggedIn
 		}
 	},
-	mounted() {
-		var loggedIn = this.loggedIn
-
+	async mounted() {
 		try {
-			if (!loggedIn) {
+			if (!this.isLoggedIn) {
 				document.getElementById("account-section").innerHTML = `
 				<a class="btn btn-outline-secondary" role="button" href="/login">Login</a>
 				<a class="btn btn-outline-success" role="button" href="/register">Register</a>`
@@ -50,9 +50,6 @@ export default {
 					</li>
 					<li class="nav-item">
 						<a class="text-warning nav-link lb-link" href="/leaderboards">Leaderboards <!-- <i class="bi bi-box-arrow-up-right"></i> --></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="https://github.com/szB3NC3/lel-tar" target="_blank">GitHub <i class="bi bi-box-arrow-up-right"></i></a>
 					</li>
 				</ul>
 				<div class="d-flex justify-content-end gap-1" id="account-section"></div>
