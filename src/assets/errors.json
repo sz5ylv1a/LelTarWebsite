@@ -1,0 +1,14 @@
+[
+	{
+		"code": 401,
+		"msg": "Unauthorized"
+	},
+	{
+		"code": 403,
+		"msg": "Forbidden"
+	},
+	{
+		"code": 404,
+		"msg": "Page Not Found"
+	}
+]

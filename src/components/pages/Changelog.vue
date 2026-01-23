@@ -2,7 +2,7 @@
 export default {
 	data() {
 		return {
-			latestGameVer: "0.0.2.8",
+			latestGameVer: "0.0.2.8"
 		}
 	},
 	mounted() {

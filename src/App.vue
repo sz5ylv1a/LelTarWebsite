@@ -1,6 +1,6 @@
 <script setup lang="js">
-import navbar from './components/navbar.vue'
-import PageFooter from './components/page-footer.vue';
+import Navbar from './components/Navbar.vue';
+import PageFooter from './components/PageFooter.vue';
 </script>
 
 <template>
