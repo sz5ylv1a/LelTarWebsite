@@ -1,4 +1,6 @@
 <script setup lang="js">
+import axios from 'axios';
+
 function closeReqNotice() {
 	const x = document.getElementById('lb-req-notice');
 	x.style.display = "none";
@@ -9,36 +11,34 @@ function closeReqNotice() {
 export default {
 	data() {
 		return {
-			dadada: []
+			difficulties: [],
+			countries: [],
+			users: [],
+			leaderboardEntries: []
 		}
 	},
-	async mounted() {
-		let difficulties = [];
-		let countries = [];
-		let users = [];
-		let leaderboardEntries = [];
-
-		async function fetchFromApi(targetUrl, whereToOutput) {
+	mounted() {
+		function fetchFromApi(targetUrl, whereToOutput) {
 			try {
-				const response = await fetch(targetUrl);
-				if (!response.ok) {
-					throw new Error("Response status:",response.status);
-				}
-				const result = await response.json();
-				await console.debug("Fetched",targetUrl);
-				whereToOutput = result
-				await console.debug(result);
+				axios.get(targetUrl).then(response => (
+					whereToOutput = response
+				));
+				console.debug("Fetched",targetUrl);
+				console.debug(whereToOutput);
 			}
 			catch (error) {
 				console.error(`An error has occured trying to fetch "${targetUrl}":\n${error}`);
 			}
 		}
 
-		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Difficulties", difficulties);
-		await console.debug(difficulties)
-		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Countries", countries);
-		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Users", users);
-		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Lbs", leaderboardEntries);
+		fetchFromApi('https://leltargame.tryasp.net/api/v1/Difficulties', this.difficulties);
+		fetchFromApi('https://leltargame.tryasp.net/api/v1/Countries', this.countries);
+		fetchFromApi('https://leltargame.tryasp.net/api/v1/Users', this.users);
+		fetchFromApi('https://leltargame.tryasp.net/api/v1/Lbs', this.leaderboardEntries);
+		console.debug(this.difficulties)
+		console.debug(this.countries)
+		console.debug(this.users)
+		console.debug(this.leaderboardEntries)
 	}
 }
 </script>
@@ -93,7 +93,7 @@ export default {
 						<th scope="col">Achieved</th>
 					</tr>
 				</thead>
-				<tbody class="table-group-divider">
+				<tbody class="table-group-divider" v-if="leaderboardEntries.length">
 					<tr v-for="l in leaderboardEntries" :key="l.id">
 						<th scope="row">{{ l.id }}</th>
 						<td>{{ l.usernameID }}</td>
