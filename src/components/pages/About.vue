@@ -26,7 +26,7 @@
 				<tbody class="table-group-divider">
 					<tr>
 						<th scope="row">Move</th>
-						<td><kbd>⬅</kbd> <kbd>⬇</kbd> <kbd>⬆</kbd> <kbd>➡</kbd> / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / <kbd>Numpad1</kbd> <kbd>Numpad2</kbd> <kbd>Numpad3</kbd> <kbd>Numpad5</kbd></td>
+						<td><kbd>&#x1f808;</kbd> <kbd>&#x1f80b;</kbd> <kbd>&#x1f809;</kbd> <kbd>&#x1f80a;</kbd> / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / <kbd>Numpad1</kbd> <kbd>Numpad2</kbd> <kbd>Numpad3</kbd> <kbd>Numpad5</kbd></td>
 						<td><span class="xbox-btns">S</span> / <span class="xbox-btns">&lt;</span></td>
 						<td><span class="ps-btns">S</span> / <span class="ps-btns">&lt;</span></td>
 					</tr>

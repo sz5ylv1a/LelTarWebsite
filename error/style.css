@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Color+Emoji&family=Noto+Emoji:wght@300..700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+:root {
+	--main-font: ABeeZee, Asap, "Noto Color Emoji", "Noto Emoji", sans-serif;
+	--bg-colour: #2c0b0e;
+}
+body {
+	font-family: var(--main-font);
+	text-align: center;
+	scrollbar-width: thin;
+	background-color: var(--bg-colour);
+	color: #dee2e6;
+}
+code, kbd {
+	font-family: JetBrains Mono, "Noto Color Emoji", "Noto Emoji", monospace;
+}
+#errTitle {
+	font-size: 4rem;
+}
+#errMsg {
+	font-size: 2rem;
+	font-style: italic;
+}
+button {
+	font-family: var(--main-font);
+	font-size: 1.4rem;
+	margin-top: 50px;
+	padding: 0.7rem;
+	background-color: transparent;
+	color: #dee2e6;
+	border: 2px solid #dee2e6;
+	border-radius: 10px;
+	cursor: default;
+}
+button:active {
+	background-color: #dee2e6;
+	color: var(--bg-colour);
+}

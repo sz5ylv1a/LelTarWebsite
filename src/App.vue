@@ -15,7 +15,7 @@ import PageFooter from './components/PageFooter.vue';
 
 <style>
 .navbar {
-	box-shadow: 5px 0 10px #000;
+	box-shadow: 0 0 10px #000;
 }
 h1 {
 	margin-top: 20px;

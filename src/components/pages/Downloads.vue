@@ -28,7 +28,7 @@ var checksumLinux = "75d90693b6209e2d649271c19be34bd6402afcfd16d342197dbf16a5fc4
 		<p>Linux versions are currently only available in 64-bit, and are distributed as portable installations as I don't wanna bother making an AppImage for it yet.</p>
 		<p>This was tested only on <strong>Arch Linux</strong>.</p>
 		<div class="alert alert-warning" role="alert">
-			⚠	<strong>You might need to use <code>chmod +x</code> to allow the game to start.</strong> This must be applied to both the <code>.x86_64</code> executable and <code>.sh</code> script for it to work.
+			&#x26a0; <strong>You might need to use <code>chmod +x</code> to allow the game to start.</strong> This must be applied to both the <code>.x86_64</code> executable and <code>.sh</code> script for it to work.
 		</div>
 		<div class="d-flex gap-1 mb-1">
 			<button type="button" class="btn btn-success">Portable (64-bit, .tar.gz)</button>

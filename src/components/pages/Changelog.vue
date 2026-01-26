@@ -2,22 +2,25 @@
 export default {
 	data() {
 		return {
-			latestGameVer: "0.0.2.8"
+			latestGameVer: "0.0.2.8",
+			latestApiVer: "1.0",
 		}
 	},
 	mounted() {
 		try {
-			const latest = document.getElementById("v"+this.latestGameVer)
-			latest.open = true
+			function openLatest(type,verId) {
+				const latest = document.getElementById(type+"-"+verId);
+				latest.open = true;
+			}
+
+			openLatest("game",this.latestGameVer);
+			openLatest("api",this.latestApiVer)
 		}
 		catch (error) {
 			console.error(error)
 		}
 	}
 }
-// var openLatest = document.getElementById('latest').open
-
-// openLatest = true;
 </script>
 
 <template>
@@ -25,7 +28,13 @@ export default {
 		<h1>Changelog</h1>
 	<p>This page contains the changelog of the game and server, documenting every possible version. <strong>The latest version is <code id="latest-version">v{{ latestGameVer }}</code>.</strong></p>
 	<hr>
-	<details id="v0.0.2.8">
+	<details id="api-1.0">
+		<summary class="h2">API - v1.0 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
+		<ul>
+			<li>Initial release...?</li>
+		</ul>
+	</details>
+	<details id="game-0.0.2.8">
 		<summary class="h2">Game - v0.0.2.8 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
 			<li>Added actual blur effects, finally!</li>
@@ -38,7 +47,7 @@ export default {
 			</ul>
 		</ul>
 	</details>
-	<details id="v0.0.2.7">
+	<details id="game-0.0.2.7">
 		<summary class="h2">Game - v0.0.2.7</summary>
 		<ul>
 			<li>Added a W.I.P. 3D scrolling background for stages</li>
@@ -46,7 +55,7 @@ export default {
 			<li>Lots of small tweaks and changes...</li>
 		</ul>
 	</details>
-	<details id="v0.0.2.2">
+	<details id="game-0.0.2.2">
 		<summary class="h2">Game - v0.0.2.2</summary>
 		<ul>
 			<li>Changed main number font</li>

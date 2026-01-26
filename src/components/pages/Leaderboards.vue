@@ -1,33 +1,44 @@
-<script setup>
-	
+<script setup lang="js">
+function closeReqNotice() {
+	const x = document.getElementById('lb-req-notice');
+	x.style.display = "none";
+}
 </script>
 
 <script lang="js">
 export default {
 	data() {
 		return {
-			difficulties: [],
-			countries: []
+			dadada: []
 		}
 	},
 	async mounted() {
+		let difficulties = [];
+		let countries = [];
+		let users = [];
+		let leaderboardEntries = [];
+
 		async function fetchFromApi(targetUrl, whereToOutput) {
 			try {
 				const response = await fetch(targetUrl);
 				if (!response.ok) {
 					throw new Error("Response status:",response.status);
 				}
-				whereToOutput = await response.json();
-				console.debug("Fetched",targetUrl);
-				console.debug(whereToOutput);
+				const result = await response.json();
+				await console.debug("Fetched",targetUrl);
+				whereToOutput = result
+				await console.debug(result);
 			}
 			catch (error) {
 				console.error(`An error has occured trying to fetch "${targetUrl}":\n${error}`);
 			}
 		}
-		
-		fetchFromApi("https://leltargame.tryasp.net/api/v1/Difficulties",this.difficulties);
-		fetchFromApi("https://leltargame.tryasp.net/api/v1/Countries",this.countries);
+
+		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Difficulties", difficulties);
+		await console.debug(difficulties)
+		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Countries", countries);
+		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Users", users);
+		await fetchFromApi("https://leltargame.tryasp.net/api/v1/Lbs", leaderboardEntries);
 	}
 }
 </script>
@@ -64,9 +75,9 @@ export default {
 		
 		<div class="alert alert-info" id="lb-req-notice">
 			<div class="d-flex align-items-center">
-				<div class="flex-fill">ℹ️ Only scores above <strong>50,000</strong> and <strong>Easy</strong> difficulty can appear on the leaderboards!</div>
+				<div class="flex-fill">&#x2139; Only scores above <strong>50,000</strong> and <strong>Easy</strong> difficulty can appear on the leaderboards!</div>
 				<div>
-					<button type="button" class="btn-close" aria-label="Close" onclick="closeReqNotice()"></button>
+					<button type="button" class="btn-close" aria-label="Close" :onclick="closeReqNotice"></button>
 				</div>
 			</div>
 		</div>
@@ -83,7 +94,14 @@ export default {
 					</tr>
 				</thead>
 				<tbody class="table-group-divider">
-					<tr>
+					<tr v-for="l in leaderboardEntries" :key="l.id">
+						<th scope="row">{{ l.id }}</th>
+						<td>{{ l.usernameID }}</td>
+						<td>{{ l.score }}</td>
+						<td>{{ l.difficultyID }}</td>
+						<td>{{ l.achievedAt }}</td>
+					</tr>
+					<!-- <tr>
 						<th scope="row">1</th>
 						<td>Ellie9192</td>
 						<td>1,232,600</td>
@@ -110,7 +128,7 @@ export default {
 						<td>502,850</td>
 						<td>Normal</td>
 						<td>December 10th, 2025 @ 12:00:09</td>
-					</tr>
+					</tr> -->
 				</tbody>
 			</table>
 		</div>
