@@ -97,19 +97,19 @@ function newDate(z) {return new Date(z)}
 			<div class="d-flex gap-1 text-end">
 				<div class="btn-group dropdown" id="filter-by">
 					<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Filter by
+						<i class="bi bi-funnel-fill"></i> Filter by
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li><h6 class="dropdown-header">Difficulty</h6></li>
-						<li v-for="d in toRaw(difficulties.flat())" :key="d.id"><button class="dropdown-item">{{ d.difficultyName }}</button></li>
+						<li v-for="d in toRaw(difficulties.flat())" :key="d.id"><button class="dropdown-item">{{ d.icon }} {{ d.difficultyName }}</button></li>
 						<li><hr class="dropdown-divider" /></li>
 						<li><h6 class="dropdown-header">Country</h6></li>
-						<li v-for="c in toRaw(countries.flat())" :key="c.id"><button class="dropdown-item">{{ c.name }}</button></li>
+						<li v-for="c in toRaw(countries.flat())" :key="c.id"><button class="dropdown-item">{{ c.flag }} {{ c.name }}</button></li>
 					</ul>
 				</div>
 				<div class="btn-group dropdown" id="order-by">
 					<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Order by
+						<i class="bi bi-sort-up"></i> Order by
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end order-by-menu">
 						<li><button id="ordopt-1" @click="updateSorting(1)" class="dropdown-item">Score and Difficulty</button></li>
@@ -120,16 +120,17 @@ function newDate(z) {return new Date(z)}
 		</div>
 		<hr />
 		
-		<div class="alert alert-info" id="lb-req-notice">
+		<div class="alert alert-info alert-dismissable fade show" id="lb-req-notice" role="alert">
 			<div class="d-flex align-items-center">
 				<div class="flex-fill">&#x2139; Only scores above <strong>50,000</strong> and <strong>Easy</strong> difficulty can appear on the leaderboards!</div>
 				<div>
-					<button type="button" class="btn-close" aria-label="Close" :onclick="closeReqNotice"></button>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 			</div>
 		</div>
 		<div class="table-responsive-lg">
 			<table class="table table-striped table-sm caption-top">
+				<caption class="pt-0"><em>Sorting and Filtering doesn't work yet!!!</em></caption>
 				<thead>
 					<tr>
 						<th scope="col">#</th>
@@ -140,12 +141,12 @@ function newDate(z) {return new Date(z)}
 					</tr>
 				</thead>
 				<tbody class="table-group-divider" v-if="leaderboardEntries.length">
-					<tr v-for="l in toRaw(leaderboardEntries.flat())" :key="l.id">
-						<th scope="row">{{ numberWithCommas(l.id) }}</th>
+					<tr v-for="(l, i) in toRaw(leaderboardEntries.flat()).sort((a,b) => b.score - a.score)" :key="l.id">
+						<th scope="row">{{ numberWithCommas(i+1) }}</th>
 						<td>
 							{{ toRaw(users.flat()).find(u => u.id === l.usernameID).username }}
-							<span class="badge text-secondary" style="font-style:italic;">
-								{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name }}
+							<span class="badge text-secondary my-auto align-items-center" v-bind:title="toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name" style="cursor:default;">
+								{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).flag }}
 							</span>
 						</td>
 						<td>{{ numberWithCommas(l.score) }}</td>

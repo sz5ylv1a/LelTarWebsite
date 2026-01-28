@@ -29,13 +29,13 @@ export default {
 	<p>This page contains the changelog of the game and server, documenting every possible version. <strong>The latest version is <code id="latest-version">v{{ latestGameVer }}</code>.</strong></p>
 	<hr>
 	<details id="api-1.0">
-		<summary class="h2">API - v1.0 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
+		<summary class="h2"><i class="bi bi-database"></i> API - v1.0 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
 			<li>Initial release...?</li>
 		</ul>
 	</details>
 	<details id="game-0.0.2.8">
-		<summary class="h2">Game - v0.0.2.8 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
+		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.0.2.8 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
 			<li>Added actual blur effects, finally!</li>
 			<li>A somewhat functional and W.I.P. difficulty system</li>
@@ -48,7 +48,7 @@ export default {
 		</ul>
 	</details>
 	<details id="game-0.0.2.7">
-		<summary class="h2">Game - v0.0.2.7</summary>
+		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.0.2.7</summary>
 		<ul>
 			<li>Added a W.I.P. 3D scrolling background for stages</li>
 			<li>An even more fleshed out menu complete with functional graphics settings</li>
@@ -56,7 +56,7 @@ export default {
 		</ul>
 	</details>
 	<details id="game-0.0.2.2">
-		<summary class="h2">Game - v0.0.2.2</summary>
+		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.0.2.2</summary>
 		<ul>
 			<li>Changed main number font</li>
 			<li>Added a W.I.P. boss bar, containing info like boss health, name, current spellcard and a timer until the attack stops.</li>

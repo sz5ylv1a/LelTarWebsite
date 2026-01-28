@@ -14,7 +14,17 @@
 				<div class="carousel-content text-center">
 					<h1>Lel.tar</h1>
 					<p class="text-center">An arcade-style "bullet hell" Shoot 'em Up game, taking you to an adventure of searching for a stolen package...</p>
-					<a role="button" class="btn btn-lg btn-outline-primary" href="/downloads" style="line-height:1;">Download now!<br><span style="font-size:0.75rem;">for Windows & Linux</span></a>
+					<a role="button" class="btn btn-lg btn-outline-primary" href="/downloads" style="line-height:1;">
+						<div class="row row-cols-auto">
+							<div class="col align-self-center justify-content-center pe-0">
+								<i class="bi bi-download"></i>
+							</div>
+							<div class="col text-start">
+								Download now!<br>
+								<span style="font-size:0.75rem;">for Windows & Linux</span>
+							</div>
+						</div>
+					</a>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -49,7 +59,17 @@
 	<div class="text-center py-5 px-5">
 		<div class="container-xxl">
 			<h2>Ready to disembark?</h2>
-			<a role="button" class="btn btn-lg btn-outline-primary" href="/downloads" style="line-height:1;">Download now!<br><span style="font-size:0.75rem;">for Windows & Linux</span></a>
+			<a role="button" class="btn btn-lg btn-outline-primary" href="/downloads" style="line-height:1;">
+				<div class="row row-cols-auto">
+					<div class="col align-self-center justify-content-center pe-0">
+						<i class="bi bi-download"></i>
+					</div>
+					<div class="col text-start">
+						Download now!<br>
+						<span style="font-size:0.75rem;">for Windows & Linux</span>
+					</div>
+				</div>
+			</a>
 		</div>
 	</div>
 </template>

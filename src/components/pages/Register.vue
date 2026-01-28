@@ -5,22 +5,22 @@
 <template>
 	<div class="container-xxl">
 		<h1 class="text-center mb-3">Create an account</h1>
-		<form class="mb-2" id="registration" action="">
+		<form class="mb-2 needs-validation" id="registration" action="" novalidate>
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control" id="username" name="username" />
-				<label for="username">Username</label>
+				<input type="text" class="form-control" id="username" name="username" required />
+				<label for="username" class="form-label">Username</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="email" class="form-control" id="email" name="email" />
-				<label for="email">E-mail</label>
+				<input type="email" class="form-control" id="email" name="email" required />
+				<label for="email" class="form-label">E-mail</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="password" name="password" />
-				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" name="password" required />
+				<label for="password" class="form-label">Password</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" />
-				<label for="passwordConfirm">Confirm Password</label>
+				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required />
+				<label for="passwordConfirm" class="form-label">Confirm Password</label>
 			</div>
 			<div class="p-4 bg-body-tertiary mb-3">
 				<div class="form-check">
