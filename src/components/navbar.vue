@@ -49,7 +49,7 @@ export default {
 						<router-link class="nav-link" to="/downloads">Downloads</router-link>
 					</li>
 					<li class="nav-item">
-						<a class="text-warning nav-link lb-link" href="/leaderboards">Leaderboards <!-- <i class="bi bi-box-arrow-up-right"></i> --></a>
+						<a class="text-warning nav-link lb-link" href="/leaderboards">Leaderboards</a>
 					</li>
 				</ul>
 				<div class="d-flex justify-content-end gap-1" id="account-section"></div>

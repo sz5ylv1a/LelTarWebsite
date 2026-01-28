@@ -1,9 +1,17 @@
 <script setup lang="js">
-import axios from 'axios';
+import { ref, toRaw } from 'vue';
+import monthsJson from '/months.json?url';
 
 function closeReqNotice() {
 	const x = document.getElementById('lb-req-notice');
 	x.style.display = "none";
+}
+
+// Source - https://stackoverflow.com/a
+// Posted by Elias Zamaria, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-01-28, License - CC BY-SA 4.0
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 </script>
 
@@ -11,36 +19,75 @@ function closeReqNotice() {
 export default {
 	data() {
 		return {
-			difficulties: [],
-			countries: [],
-			users: [],
-			leaderboardEntries: []
+			difficulties: ref([]),
+			countries: ref([]),
+			users: ref([]),
+			leaderboardEntries: ref([]),
+			
+			monthsNames: ref([])
 		}
 	},
-	mounted() {
-		function fetchFromApi(targetUrl, whereToOutput) {
+	async mounted() {
+		const apiUrl = import.meta.env.VITE_API_URL
+		async function fetchFromApi(targetUrl, whereToOutput) {
 			try {
-				axios.get(targetUrl).then(response => (
-					whereToOutput = response
-				));
+				const response = await fetch(targetUrl);
+				if (!response.ok) {
+					throw new Error("HTTP Error! Status:",response.status)
+				}
+				let dat = await response.json();
+				whereToOutput.push(dat)
 				console.debug("Fetched",targetUrl);
-				console.debug(whereToOutput);
+				console.debug(toRaw(whereToOutput).flat());
 			}
 			catch (error) {
 				console.error(`An error has occured trying to fetch "${targetUrl}":\n${error}`);
 			}
 		}
-
-		fetchFromApi('https://leltargame.tryasp.net/api/v1/Difficulties', this.difficulties);
-		fetchFromApi('https://leltargame.tryasp.net/api/v1/Countries', this.countries);
-		fetchFromApi('https://leltargame.tryasp.net/api/v1/Users', this.users);
-		fetchFromApi('https://leltargame.tryasp.net/api/v1/Lbs', this.leaderboardEntries);
-		console.debug(this.difficulties)
-		console.debug(this.countries)
-		console.debug(this.users)
-		console.debug(this.leaderboardEntries)
+		
+		fetchFromApi(apiUrl+'Difficulties', this.difficulties);
+		fetchFromApi(apiUrl+'Countries', this.countries);
+		fetchFromApi(apiUrl+'Users', this.users);
+		fetchFromApi(apiUrl+'Lbs', this.leaderboardEntries);
+		fetchFromApi(monthsJson, this.monthsNames);
 	}
 }
+
+let sortingMode = ref(0)
+
+function updateSorting(x) {
+	const opt1 = document.getElementById("ordopt-1");
+	const opt2 = document.getElementById("ordopt-2");
+	
+	if (sortingMode !== x) {
+		sortingMode = x
+		switch (sortingMode) {
+			case 0:	// Score and Difficulty
+			opt1.classList.add("active");
+			opt2.classList.remove("active");
+			case 1: // Only by Score
+			opt1.classList.remove("active");
+			opt2.classList.add("active");
+		}
+	}
+}
+
+function ordinalSuffix(i) {
+	let j = i % 10,
+	k = i % 100;
+	if (j === 1 && k !== 11) {
+		return i + "st";
+	}
+	if (j === 2 && k !== 12) {
+		return i + "nd";
+	}
+	if (j === 3 && k !== 13) {
+		return i + "rd";
+	}
+	return i + "th";
+}
+
+function newDate(z) {return new Date(z)}
 </script>
 
 <template>
@@ -54,19 +101,19 @@ export default {
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li><h6 class="dropdown-header">Difficulty</h6></li>
-						<li v-for="d in difficulties" :key="d.id"><button class="dropdown-item">{{ d.difficultyName }}</button></li>
+						<li v-for="d in toRaw(difficulties.flat())" :key="d.id"><button class="dropdown-item">{{ d.difficultyName }}</button></li>
 						<li><hr class="dropdown-divider" /></li>
 						<li><h6 class="dropdown-header">Country</h6></li>
-						<li v-for="c in countries" :key="c.id"><button class="dropdown-item">{{ c.name }}</button></li>
+						<li v-for="c in toRaw(countries.flat())" :key="c.id"><button class="dropdown-item">{{ c.name }}</button></li>
 					</ul>
 				</div>
 				<div class="btn-group dropdown" id="order-by">
 					<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Order by
 					</button>
-					<ul class="dropdown-menu dropdown-menu-end">
-						<li><button class="dropdown-item active">Score and Difficulty</button></li>
-						<li><button class="dropdown-item">Only by Score</button></li>
+					<ul class="dropdown-menu dropdown-menu-end order-by-menu">
+						<li><button id="ordopt-1" @click="updateSorting(1)" class="dropdown-item">Score and Difficulty</button></li>
+						<li><button id="ordopt-2" @click="updateSorting(2)" class="dropdown-item">Only by Score</button></li>
 					</ul>
 				</div>
 			</div>
@@ -83,7 +130,6 @@ export default {
 		</div>
 		<div class="table-responsive-lg">
 			<table class="table table-striped table-sm caption-top">
-				<caption><em>The leaderboards have not been implemented yet, but here's what you can look forward to in the meantime...</em></caption>
 				<thead>
 					<tr>
 						<th scope="col">#</th>
@@ -94,41 +140,21 @@ export default {
 					</tr>
 				</thead>
 				<tbody class="table-group-divider" v-if="leaderboardEntries.length">
-					<tr v-for="l in leaderboardEntries" :key="l.id">
-						<th scope="row">{{ l.id }}</th>
-						<td>{{ l.usernameID }}</td>
-						<td>{{ l.score }}</td>
-						<td>{{ l.difficultyID }}</td>
-						<td>{{ l.achievedAt }}</td>
+					<tr v-for="l in toRaw(leaderboardEntries.flat())" :key="l.id">
+						<th scope="row">{{ numberWithCommas(l.id) }}</th>
+						<td>
+							{{ toRaw(users.flat()).find(u => u.id === l.usernameID).username }}
+							<span class="badge text-secondary" style="font-style:italic;">
+								{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name }}
+							</span>
+						</td>
+						<td>{{ numberWithCommas(l.score) }}</td>
+						<td>{{ toRaw(difficulties.flat()).find(d => d.id === l.difficultyID).difficultyName }}</td>
+						<td >
+							{{ toRaw(monthsNames.flat()).find(m => m.id === newDate(l.achievedAt).getMonth()+1).name }} {{ ordinalSuffix(newDate(l.achievedAt).getDate()) }}, {{ newDate(l.achievedAt).getFullYear() }} @
+							{{ newDate(l.achievedAt).getHours() }}:{{ ('0'+newDate(l.achievedAt).getMinutes()).slice(-2) }}:{{ ('0'+newDate(l.achievedAt).getSeconds()).slice(-2) }}
+						</td>
 					</tr>
-					<!-- <tr>
-						<th scope="row">1</th>
-						<td>Ellie9192</td>
-						<td>1,232,600</td>
-						<td>Lunatic</td>
-						<td>January 21st, 2026 @ 16:03:32</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>xXx_DemonSlayer124_xXx</td>
-						<td>986,450</td>
-						<td>Lunatic</td>
-						<td>January 14th, 2026 @ 18:21:44</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>test_account</td>
-						<td>625,500</td>
-						<td>Hard</td>
-						<td>November 18th, 2025 @ 13:56:01</td>
-					</tr>
-					<tr>
-						<th scope="row">4</th>
-						<td>gamerboy87</td>
-						<td>502,850</td>
-						<td>Normal</td>
-						<td>December 10th, 2025 @ 12:00:09</td>
-					</tr> -->
 				</tbody>
 			</table>
 		</div>
@@ -137,4 +163,8 @@ export default {
 
 <style scoped>
 h1 {margin-top:0;}
+#filter-by .dropdown-menu {
+	max-height: 70vh;
+	overflow: scroll;
+}
 </style>
