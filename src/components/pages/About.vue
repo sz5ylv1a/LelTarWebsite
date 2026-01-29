@@ -4,11 +4,11 @@
 
 <template>
 	<div class="container-xxl">
-		<h1>About this game</h1>
+		<h1><i class="bi bi-info-circle-fill"></i> About this game</h1>
 		<p><strong>Lel.tar</strong> is an <strong>arcade-style <abbr title="Shoot 'em Up">"shmup"</abbr></strong> game, heavily inspired by games like <strong>Touhou Project</strong> and <strong>QP Shooting</strong>. It features simple graphics, guaranteed to run smooth enough even on weaker integrated GPUs <em>(i.e. Intel&reg; HD/UHD Graphics)</em>; as well as the same engaging gameplay carefully designed for any kind of player.</p>
 		<hr />
 		
-		<h2 id="backstory"><i class="bi bi-clock-history"></i> Backstory / Prologue</h2>
+		<h2 id="backstory"><i class="bi bi-hourglass-split"></i> Backstory / Prologue</h2>
 		<p>You went to order a package from your favourite shopping site, SchmitarMarkt. The delivery man from <abbr title="Outback-Outeast Postal Service">OOPS</abbr> comes to place it in front of your door. You come and get it, and- uh oh! Some shady porch pirates come to beat you up and steal the package from you, and then they fly away to their organization's <em>(<abbr title="Deportation of Imported Crates Syndicate">DICS</abbr>)</em> warehouse to then maybe resell it. Having experienced that, as well as hearing news of other locals being affected by those guys, it's time to fly up and follow them to the warehouse to retrieve the package(s) once and for all!</p>
 		<hr />
 		

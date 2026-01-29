@@ -25,8 +25,8 @@ export default {
 
 <template>
 	<div class="container-xxl">
-		<h1>Changelog</h1>
-	<p>This page contains the changelog of the game and server, documenting every possible version. <strong>The latest version is <code id="latest-version">v{{ latestGameVer }}</code>.</strong></p>
+		<h1><i class="bi bi-clock-history"></i> Changelog</h1>
+	<p>This page contains the changelog of the game and server, documenting every possible version.</p>
 	<hr>
 	<details id="api-1.0">
 		<summary class="h2"><i class="bi bi-database"></i> API - v1.0 <span class="badge rounded-pill text-bg-success">Latest</span></summary>

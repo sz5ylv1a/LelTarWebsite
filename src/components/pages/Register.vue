@@ -1,31 +1,31 @@
 <script setup lang="js">
-	
+
 </script>
 
 <template>
 	<div class="container-xxl">
 		<h1 class="text-center mb-3">Create an account</h1>
-		<form class="mb-2 needs-validation" id="registration" action="" novalidate>
+		<form class="mb-2 needs-validation" id="registration" action="" method="post" novalidate>
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control" id="username" name="username" required />
-				<label for="username" class="form-label">Username</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required />
+				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="email" class="form-control" id="email" name="email" required />
-				<label for="email" class="form-label">E-mail</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required />
+				<label for="email" class="form-label"><i class="bi bi-at"></i> E-mail</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="password" name="password" required />
-				<label for="password" class="form-label">Password</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+				<label for="password" class="form-label"><i class="bi bi-lock-fill"></i> Password</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required />
-				<label for="passwordConfirm" class="form-label">Confirm Password</label>
+				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" required />
+				<label for="passwordConfirm" class="form-label"><i class="bi bi-key-fill"></i> Confirm Password</label>
 			</div>
 			<div class="p-4 bg-body-tertiary mb-3">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" />
-					<label class="form-check-label" for="captcha"><i>pretend that there's a captcha here</i></label>
+					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required />
+					<label class="form-check-label ps-3" for="captcha">I'm not a robot</label>
 				</div>
 			</div>
 			<div class="text-center">
@@ -37,13 +37,16 @@
 </template>
 
 <style scoped>
-	form {
-		margin: auto;
-		max-width: 400px;
-	}
-	.no-account {
-		text-align: center;
-		font-style: italic;
-		opacity: 50%;
-	}
+form {
+	margin: auto;
+	max-width: 400px;
+}
+.no-account {
+	text-align: center;
+	font-style: italic;
+	opacity: 50%;
+}
+input#captcha {
+	scale: 2;
+}
 </style>

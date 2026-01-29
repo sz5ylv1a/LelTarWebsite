@@ -2,11 +2,6 @@
 import { ref, toRaw } from 'vue';
 import monthsJson from '/months.json?url';
 
-function closeReqNotice() {
-	const x = document.getElementById('lb-req-notice');
-	x.style.display = "none";
-}
-
 // Source - https://stackoverflow.com/a
 // Posted by Elias Zamaria, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-01-28, License - CC BY-SA 4.0
@@ -93,7 +88,7 @@ function newDate(z) {return new Date(z)}
 <template>
 	<div class="container-xxl">
 		<div class="d-flex align-items-center" style="margin-top:20px;">
-			<div class="flex-fill"><h1 class="mb-0">Leaderboards</h1></div>
+			<div class="flex-fill"><h1 class="mb-0"><i class="bi bi-bar-chart-line-fill"></i> Leaderboards</h1></div>
 			<div class="d-flex gap-1 text-end">
 				<div class="btn-group dropdown" id="filter-by">
 					<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -122,15 +117,18 @@ function newDate(z) {return new Date(z)}
 		
 		<div class="alert alert-info alert-dismissable fade show" id="lb-req-notice" role="alert">
 			<div class="d-flex align-items-center">
-				<div class="flex-fill">&#x2139; Only scores above <strong>50,000</strong> and <strong>Easy</strong> difficulty can appear on the leaderboards!</div>
-				<div>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				<div class="flex-fill">
+					<div class="d-flex gap-2">
+						<div>&#x2139;</div>
+						<div>Only scores above <strong>50,000</strong> and <strong>Easy</strong> difficulty can appear on the leaderboards!</div>
+					</div>
 				</div>
+				<div><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
 			</div>
 		</div>
 		<div class="table-responsive-lg">
 			<table class="table table-striped table-sm caption-top">
-				<caption class="pt-0"><em>Sorting and Filtering doesn't work yet!!!</em></caption>
+				<caption class="pt-0"><em>Filtering and changing sorting options don't work yet!!!</em></caption>
 				<thead>
 					<tr>
 						<th scope="col">#</th>
@@ -140,21 +138,25 @@ function newDate(z) {return new Date(z)}
 						<th scope="col">Achieved</th>
 					</tr>
 				</thead>
-				<tbody class="table-group-divider" v-if="leaderboardEntries.length">
-					<tr v-for="(l, i) in toRaw(leaderboardEntries.flat()).sort((a,b) => b.score - a.score)" :key="l.id">
+				<tbody class="table-group-divider">
+					<tr v-if="toRaw(leaderboardEntries.flat()).length != 0" v-for="(l, i) in toRaw(leaderboardEntries.flat()).sort((a,b) => b.score - a.score)" :key="l.id">
 						<th scope="row">{{ numberWithCommas(i+1) }}</th>
 						<td>
-							{{ toRaw(users.flat()).find(u => u.id === l.usernameID).username }}
-							<span class="badge text-secondary my-auto align-items-center" v-bind:title="toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name" style="cursor:default;">
-								{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).flag }}
-							</span>
+							{{ toRaw(users.flat()).find(u => u.id === l.usernameID).username }}<span class="text-secondary my-auto align-items-center ms-2" v-bind:title="toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name" style="cursor:default;">{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).flag }}</span>
 						</td>
 						<td>{{ numberWithCommas(l.score) }}</td>
 						<td>{{ toRaw(difficulties.flat()).find(d => d.id === l.difficultyID).difficultyName }}</td>
-						<td >
+						<td>
 							{{ toRaw(monthsNames.flat()).find(m => m.id === newDate(l.achievedAt).getMonth()+1).name }} {{ ordinalSuffix(newDate(l.achievedAt).getDate()) }}, {{ newDate(l.achievedAt).getFullYear() }} @
 							{{ newDate(l.achievedAt).getHours() }}:{{ ('0'+newDate(l.achievedAt).getMinutes()).slice(-2) }}:{{ ('0'+newDate(l.achievedAt).getSeconds()).slice(-2) }}
 						</td>
+					</tr>
+					<tr v-for="i in 20"  v-if="toRaw(leaderboardEntries.flat()).length == 0">
+						<th scope="row"><span class="placeholder col-4"></span></th>
+						<td class="placeholder-wave"><span :class="'placeholder col-'+String(Math.floor(Math.random() * 6) + 3)"></span></td>
+						<td class="placeholder-wave"><span :class="'placeholder col-'+String(Math.floor(Math.random() * 3) + 5)"></span></td>
+						<td class="placeholder-wave"><span :class="'placeholder col-'+String(Math.floor(Math.random() * 3) + 3)"></span></td>
+						<td class="placeholder-wave"><span :class="'placeholder col-'+String(Math.floor(Math.random() * 3) + 5)"></span></td>
 					</tr>
 				</tbody>
 			</table>
