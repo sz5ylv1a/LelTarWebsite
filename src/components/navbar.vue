@@ -2,29 +2,8 @@
 defineProps({
 	currentPage: String,
 	loggedIn: Boolean,
+	user: String
 })
-</script>
-
-<script lang="js">
-export default {
-	data() {
-		return {
-			isLoggedIn: this.loggedIn
-		}
-	},
-	async mounted() {
-		try {
-			if (!this.isLoggedIn) {
-				document.getElementById("account-section").innerHTML = `
-				<a class="btn btn-outline-secondary" role="button" href="/login">Login</a>
-				<a class="btn btn-outline-success" role="button" href="/register">Register</a>`
-			}
-		}
-		catch (error) {
-			console.error(error)
-		}
-	}
-}
 </script>
 
 <template>
@@ -52,12 +31,37 @@ export default {
 						<a class="text-warning nav-link lb-link" href="/leaderboards">Leaderboards</a>
 					</li>
 				</ul>
-				<div class="d-flex justify-content-end gap-1" id="account-section"></div>
+				<div class="d-flex justify-content-end gap-1" id="account-section" v-if="!loggedIn">
+					<a class="btn btn-outline-secondary" role="button" href="/login">Login</a>
+					<a class="btn btn-outline-success" role="button" href="/register">Register</a>
+				</div>
+				<div class="d-flex justify-content-end gap-1" id="account-section" v-else>
+					<div class="btn-group">
+						<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="border:none;"><span class="account-circle"><i class="bi bi-person-circle" /></span><span class="ps-2">{{ user }}</span></button>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li><a class="dropdown-item" href="/profile"><i class="bi bi-person-fill" /> Profile</a></li>
+							<li><a class="dropdown-item" href="/stats"><i class="bi bi-graph-up" /> Statistics</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="/settings"><i class="bi bi-sliders2" /> Settings</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><button class="dropdown-item" id="logout-btn"><i class="bi bi-box-arrow-left" /> Log out</button></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
 </template>
 
 <style scoped>
-	
+.account-circle {
+	scale: 2;
+}
+#logout-btn {
+	color: var(--bs-danger);
+}
+#logout-btn:active {
+	background-color: var(--bs-danger);
+	color: #fff;
+}
 </style>

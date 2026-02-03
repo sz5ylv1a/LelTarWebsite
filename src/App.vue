@@ -1,13 +1,18 @@
 <script setup lang="js">
 import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
+
+let isLoggedIn = true
+let username = ""
+
+if (username !== "") {isLoggedIn = true} else {isLoggedIn = false}
 </script>
 
 <template>
-	<navbar current-page="Home" :logged-in=false />
+	<navbar current-page="Home" :logged-in="isLoggedIn" :user="username" />
 	<div class="page-shit">
 		<div class="content mb-5">
-			<router-view />
+			<router-view :logged-in="isLoggedIn" :user="username" />
 		</div>
 		<page-footer entity-name="LohinSys" :f-year=2024 :l-year=2026 />
 	</div>

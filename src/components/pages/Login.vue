@@ -1,9 +1,11 @@
 <script setup lang="js">
-
+defineProps({
+	loggedIn: Boolean
+})
 </script>
 
 <template>
-	<div class="container-xxl">
+	<div class="container-xxl" v-if="loggedIn === false">
 		<h1 class="text-center mb-3">Please log in</h1>
 		<form class="mb-2 needs-validation" id="accountLogin" action="" form="get" novalidate>
 			<div class="form-floating mb-3">
@@ -29,6 +31,11 @@
 			</div>
 		</form>
 		<p class="no-account">Don't have an account? <a href="/register">Register!</a></p>
+	</div>
+	<div class="container-xxl text-center" v-else>
+		<h1>You've already logged in!</h1>
+		<p class="text-center">Log out or clear all cookies and data if you believe this is an error.</p>
+		<a :href="history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
 	</div>
 </template>
 
