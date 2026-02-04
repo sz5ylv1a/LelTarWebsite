@@ -38,7 +38,7 @@ const router = createRouter({
 		{ path: `${base}settings`, name: 'Settings', component: Settings },
 
 		// a little fix for refreshes and going to non-root links manually returning bullshit 404 errors
-		{ path: `${base}:pathMatch(.*)`, name: 'NotFound', component: NotFound }
+		{ path: `${base}:pathMatch(.*)*`, name: 'NotFound', component: NotFound }
 	]
 });
 
