@@ -14,7 +14,7 @@ if (username !== "") {isLoggedIn = true} else {isLoggedIn = false}
 		<div class="content mb-5">
 			<router-view :logged-in="isLoggedIn" :user="username" />
 		</div>
-		<page-footer entity-name="LohinSys" :f-year=2024 :l-year=2026 />
+		<page-footer entity-name="LohinSys" :f-year="2024" :l-year="2026" />
 	</div>
 </template>
 
