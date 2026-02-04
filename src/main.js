@@ -17,21 +17,23 @@ import Profile from './components/pages/personal/Profile.vue';
 import Stats from './components/pages/personal/Stats.vue';
 import Settings from './components/pages/personal/Settings.vue';
 
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
+
 const router = createRouter({
 	history: createWebHistory(),
 	routes: [
-		{ path: '/', name: 'Home', component: Home },
-		{ path: '/about', name: 'About', component: About },
-		{ path: '/changelog', name: 'Changelog', component: Changelog },
-		{ path: '/downloads', name: 'Downloads', component: Downloads },
-		{ path: '/leaderboards', name: 'Leaderboards', component: Leaderboards },
+		{ path: `${base}`, name: 'Home', component: Home },
+		{ path: `${base}about`, name: 'About', component: About },
+		{ path: `${base}changelog`, name: 'Changelog', component: Changelog },
+		{ path: `${base}downloads`, name: 'Downloads', component: Downloads },
+		{ path: `${base}leaderboards`, name: 'Leaderboards', component: Leaderboards },
 
-		{ path: '/login', name: 'login', component: Login },
-		{ path: '/register', name: 'Register', component: Register },
+		{ path: `${base}login`, name: 'login', component: Login },
+		{ path: `${base}register`, name: 'Register', component: Register },
 
-		{ path: '/profile', name: 'profile', component: Profile },
-		{ path: '/stats', name: 'stats', component: Stats },
-		{ path: '/settings', name: 'settings', component: Settings }
+		{ path: `${base}profile`, name: 'profile', component: Profile },
+		{ path: `${base}stats`, name: 'stats', component: Stats },
+		{ path: `${base}settings`, name: 'settings', component: Settings }
 	]
 });
 
