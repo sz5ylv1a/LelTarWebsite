@@ -24,19 +24,19 @@ export default {
 	},
 	async mounted() {
 		const apiUrl = import.meta.env.VITE_API_URL
-		async function fetchFromApi(targetUrl, whereToOutput) {
+		async function fetchFromApi(target, output) {
 			try {
-				const response = await fetch(targetUrl);
+				const response = await fetch(target);
 				if (!response.ok) {
 					throw new Error("HTTP Error! Status:",response.status)
 				}
 				let dat = await response.json();
-				whereToOutput.push(dat)
-				console.debug("Fetched",targetUrl);
-				console.debug(toRaw(whereToOutput).flat());
+				output.push(dat)
+				console.debug("Fetched",target);
+				console.debug(toRaw(output).flat());
 			}
 			catch (error) {
-				console.error(`An error has occured trying to fetch "${targetUrl}":\n${error}`);
+				console.error(`An error has occured trying to fetch "${targetUrl}":\n`,error);
 			}
 		}
 		
@@ -152,7 +152,7 @@ function newDate(z) {return new Date(z)}
 						</td>
 					</tr>
 					<tr v-for="i in 20"  v-if="toRaw(leaderboardEntries.flat()).length == 0">
-						<th scope="row"><span class="placeholder col-4"></span></th>
+						<th class="placeholder-wave" scope="row"><span class="placeholder col-4"></span></th>
 						<td class="placeholder-wave"><span :class="'placeholder col-'+String(Math.floor(Math.random() * 6) + 3)"></span></td>
 						<td class="placeholder-wave"><span :class="'placeholder col-'+String(Math.floor(Math.random() * 3) + 5)"></span></td>
 						<td class="placeholder-wave"><span :class="'placeholder col-'+String(Math.floor(Math.random() * 3) + 3)"></span></td>
@@ -169,5 +169,8 @@ h1 {margin-top:0;}
 #filter-by .dropdown-menu {
 	max-height: 70vh;
 	overflow: scroll;
+}
+.placeholder-wave span {
+	border-radius: 4px;
 }
 </style>

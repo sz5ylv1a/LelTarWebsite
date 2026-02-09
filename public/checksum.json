@@ -1,0 +1,13 @@
+{
+	"win64": {
+		"ins": "a932e48ed73939d2032a0a01db9a5b2c3bd9a78964cc9c2544e9fa0fbb4c8aff",
+		"bin": "5ba5a6e1457668a50cd5f4dbd6c9bb303b050970afa679d7a904f8fdb4f81c8d"
+	},
+	"win32": {
+		"ins": "fab10efe616d5b51219626436af1fb34fe2dd53252dc82744ded5130d3cf083e",
+		"bin": "d71a694468cc92b8e6da1803fc237ef9bd5f416593247665c9ef0dc01cab549b"
+	},
+	"linux": {
+		"bin": "9f676e3545bf60ae0cf3bccdd8cc4d8801a4a234e309e36b1a676e807dbed058"
+	}
+}
