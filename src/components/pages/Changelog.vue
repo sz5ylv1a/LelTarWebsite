@@ -9,7 +9,7 @@ export default {
 	mounted() {
 		try {
 			function openLatest(type,verId) {
-				const latest = document.getElementById(type+"-"+verId);
+				const latest = document.getElementById(`${type}-${verId}`);
 				latest.open = true;
 			}
 
