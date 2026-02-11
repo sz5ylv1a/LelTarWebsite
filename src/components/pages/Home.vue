@@ -1,5 +1,9 @@
 <script setup lang="js">
 const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
+
+// image alt texts
+const upsell_b1 = "Hard Difficulty Demonstration Screenshot from v0.2.12.1"
+const upsell_b2 = "placeholder image"
 </script>
 
 <template>
@@ -9,7 +13,7 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
 			<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
 			<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
 		</div>
-		<div class="carousel-inner">
+		<div class="carousel-inner border-bottom border-body" style="box-shadow: 0 0 10px #000000c0;">
 			<div class="carousel-item active">
 				<img src="/res/images/carousel/slide1.png" class="d-block w-100" alt="Demo Image 1">
 				<div class="carousel-content text-center">
@@ -53,12 +57,12 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
 					<p class="text-center text-lg-start">For the beginners and the absolute savages, Lel.tar does not hold back in difficulty, and has been fairly balanced for every kind of bullet hell player.</p>
 				</div>
 				<div class="col-lg-auto order-lg-2 text-center text-lg-end">
-					<img class="rounded" src="/res/images/upsell/block1.png" alt="" height="300">
+					<img class="rounded" src="/res/images/upsell/block1.png" :alt="upsell_b1" :title="upsell_b1" height="300">
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="bg-body-tertiary text-end py-5 px-5">
+	<div class="bg-body-tertiary text-end py-5 px-5 border-top border-bottom border-body upsell-shadow">
 		<div class="container-xxl" id="upsell2">
 			<div class="row">
 				<div class="col-lg order-lg-2 align-self-lg-center">
@@ -66,7 +70,7 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
 					<p class="text-center text-lg-end">Inspired by games like <strong>Touhou Project</strong>, Lel.tar features gameplay, visuals and various other mechanics similar to it, whilst still adding its own unique spin for an equally as awesome experience!</p>
 				</div>
 				<div class="col-lg-auto order-lg-1 text-center text-lg-end">
-					<span>what the fuck</span>
+					<img class="rounded" src="/res/images/upsell/block2.png" :alt="upsell_b2" :title="upsell_b2" height="300">
 				</div>
 			</div>
 		</div>
@@ -130,5 +134,8 @@ h1 {
 	#upsell1, #upsell2 {
 		text-align: center;
 	}
+}
+.upsell-shadow {
+	box-shadow: 0 0 10px #000000c0;
 }
 </style>
