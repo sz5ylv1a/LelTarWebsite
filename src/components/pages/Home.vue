@@ -1,10 +1,10 @@
 <script setup lang="js">
-const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
 </script>
 
 <template>
 	<div id="mainCarousel" class="carousel slide">
-		<div class="carousel-indicators">
+		<div class="carousel-indicators" data-bs-theme="light">
 			<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 			<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
 			<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -35,32 +35,46 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 				<img src="/res/images/carousel/slide3.png" class="d-block w-100" alt="Demo Image 3">
 			</div>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+		<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev" data-bs-theme="light">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			<span class="visually-hidden">Previous</span>
 		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+		<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next" data-bs-theme="light">
 			<span class="carousel-control-next-icon" aria-hidden="true"></span>
 			<span class="visually-hidden">Next</span>
 		</button>
 	</div>
 	
 	<div class="text-start py-5 px-5">
-		<div class="container-xxl">
-			<h2>Brace for an exciting challenge!</h2>
-			<p class="text-start">For the beginners and the absolute savages, Lel.tar does not hold back in difficulty, and has been fairly balanced for every kind of bullet hell player.</p>
+		<div class="container-xxl" id="upsell1">
+			<div class="row">
+				<div class="col-lg order-lg-1 align-self-lg-center">
+					<h2>Brace for an exciting challenge!</h2>
+					<p class="text-center text-lg-start">For the beginners and the absolute savages, Lel.tar does not hold back in difficulty, and has been fairly balanced for every kind of bullet hell player.</p>
+				</div>
+				<div class="col-lg-auto order-lg-2 text-center text-lg-end">
+					<img class="rounded" src="/res/images/upsell/block1.png" alt="" height="300">
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="bg-body-tertiary text-end py-5 px-5">
-		<div class="container-xxl">
-			<h2>All from the classics!</h2>
-			<p class="text-end">Inspired by games like <strong>Touhou Project</strong>, Lel.tar features gameplay, visuals and various other mechanics similar to it, whilst still adding its own unique spin for an equally as awesome experience!</p>
+		<div class="container-xxl" id="upsell2">
+			<div class="row">
+				<div class="col-lg order-lg-2 align-self-lg-center">
+					<h2>All from the classics!</h2>
+					<p class="text-center text-lg-end">Inspired by games like <strong>Touhou Project</strong>, Lel.tar features gameplay, visuals and various other mechanics similar to it, whilst still adding its own unique spin for an equally as awesome experience!</p>
+				</div>
+				<div class="col-lg-auto order-lg-1 text-center text-lg-end">
+					<span>what the fuck</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="text-center py-5 px-5">
-		<div class="container-xxl">
+		<div class="container-xxl" id="ready-upsell">
 			<h2>Ready to disembark?</h2>
-			<router-link role="button" class="btn btn-lg btn-outline-primary" :to="base+'downloads'" style="line-height:1;">
+			<router-link role="button" class="btn btn-lg btn-outline-primary" :to="base+'downloads'" style="line-height:1">
 				<div class="row row-cols-auto">
 					<div class="col align-self-center justify-content-center pe-0">
 						<i class="bi bi-download"></i>
@@ -102,11 +116,19 @@ h1 {
 		bottom: 8vw;
 	}
 }
-.carousel-content .btn {
+.carousel-content .btn,
+#ready-upsell .btn {
+	text-shadow: 0 1.5px 4px #000;
 	box-shadow:	0 1.5px 4px #000000a0, inset 0 1.5px 4px #000000a0;
 }
-.carousel-content .btn:hover {
+.carousel-content .btn:hover,
+#ready-upsell .btn:hover {
 	text-shadow: none;
 	box-shadow:	0 1.5px 4px #000000a0;
+}
+@media screen and (max-width: 991px) {
+	#upsell1, #upsell2 {
+		text-align: center;
+	}
 }
 </style>

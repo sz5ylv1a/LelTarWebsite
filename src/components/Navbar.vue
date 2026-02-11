@@ -11,7 +11,7 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 <template>
 	<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary border-bottom border-body">
 		<div class="container-xxl">
-			<a class="navbar-brand" href="/"><img src="/res/icons/favicon.png" alt="Lel.tar" height="32"> Lel.tar</a>
+			<a class="navbar-brand d-inline-flex gap-1 me-2" href="/"><img src="/res/icons/favicon.png" alt="Lel.tar" height="32"><span>Lel.tar</span><sup style="font-size:0.6rem;opacity:35%;margin-top:12px;">INDEV</sup></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -33,7 +33,7 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 						<router-link class="text-warning nav-link lb-link" :to="base+'leaderboards'">Leaderboards</router-link>
 					</li>
 				</ul>
-				<div class="d-flex justify-content-end gap-1" id="account-section" v-if="!loggedIn">
+				<div class="d-flex justify-content-center justify-content-lg-end gap-1" id="account-section" v-if="!loggedIn">
 					<router-link class="btn btn-outline-secondary" role="button" :to="base+'login'">Login</router-link>
 					<router-link class="btn btn-outline-success" role="button" :to="base+'register'">Register</router-link>
 				</div>
@@ -65,5 +65,15 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 #logout-btn:active {
 	background-color: var(--bs-danger);
 	color: #fff;
+}
+@media screen and (min-width: 992px) {
+	.navbar {
+		max-height: 60px;
+	}
+}
+@media screen and (max-width: 992px) {
+	.navbar-nav {
+		text-align: center;
+	}
 }
 </style>
