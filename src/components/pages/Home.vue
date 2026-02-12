@@ -57,7 +57,7 @@ const upsell_b2 = "placeholder image"
 					<p class="text-center text-lg-start">For the beginners and the absolute savages, Lel.tar does not hold back in difficulty, and has been fairly balanced for every kind of bullet hell player.</p>
 				</div>
 				<div class="col-lg-auto order-lg-2 text-center text-lg-end">
-					<img class="rounded" src="/res/images/upsell/block1.png" :alt="upsell_b1" :title="upsell_b1" height="300">
+					<img class="rounded upsell-shadow" src="/res/images/upsell/block1.png" :alt="upsell_b1" :title="upsell_b1" height="300">
 				</div>
 			</div>
 		</div>
@@ -70,7 +70,7 @@ const upsell_b2 = "placeholder image"
 					<p class="text-center text-lg-end">Inspired by games like <strong>Touhou Project</strong>, Lel.tar features gameplay, visuals and various other mechanics similar to it, whilst still adding its own unique spin for an equally as awesome experience!</p>
 				</div>
 				<div class="col-lg-auto order-lg-1 text-center text-lg-end">
-					<img class="rounded" src="/res/images/upsell/block2.png" :alt="upsell_b2" :title="upsell_b2" height="300">
+					<img class="rounded upsell-shadow" src="/res/images/upsell/block2.png" :alt="upsell_b2" :title="upsell_b2" height="300">
 				</div>
 			</div>
 		</div>
@@ -94,8 +94,9 @@ const upsell_b2 = "placeholder image"
 </template>
 
 <style scoped>
-h1 {
+.carousel-content h1, .carousel-content p {
 	margin-top: initial;
+	color: #dee2e6;
 }
 .carousel-item img {
 	filter: brightness(50%);
@@ -137,5 +138,11 @@ h1 {
 }
 .upsell-shadow {
 	box-shadow: 0 0 10px #000000c0;
+}
+#upsell1 div div img {
+	rotate: 2.5deg;
+}
+#upsell2 div div img {
+	rotate: -2.5deg;
 }
 </style>

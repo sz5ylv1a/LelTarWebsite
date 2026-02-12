@@ -2,7 +2,7 @@
 export default {
 	data() {
 		return {
-			latestGameVer: "0.2.12.1",
+			latestGameVer: "0.2.13",
 			latestApiVer: "1.0",
 		}
 	},
@@ -28,18 +28,26 @@ export default {
 		<h1><i class="bi bi-clock-history"></i> Changelog</h1>
 	<p>This page contains the changelog of the game and server, documenting every possible version.</p>
 	<hr>
-	<details id="game-0.2.12.1">
-		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.2.12.1 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
-		<h5>This is a versioned hotfix to change a couple things that I forgot to do and fix critical stuff<br /><strong class="fw-bolder">I strongly recommend updating your game to this version if you're still on v0.2.12</strong></h5>
+	<details id="game-0.2.13">
+		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.2.13 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
-			<li>Installed app name wasn't showing correctly, now it should show fine</li>
-			<li>Internal consistency changes, including window titles and folder names being capitalized</li>
+			<li>Added an explosion animation to bullets that were affected by the bomb ability</li>
+			<li>Fixed a bug with the bomb sound not playing at the last bomb used</li>
+			<li>Volume sliders finally work as they should now!</li>
 		</ul>
 	</details>
 	<details id="api-1.0">
 		<summary class="h2"><i class="bi bi-database"></i> API - v1.0 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
 			<li>Initial release...?</li>
+		</ul>
+	</details>
+	<details id="game-0.2.12.1">
+		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.2.12.1</summary>
+		<h5>This is a versioned hotfix to change a couple things that I forgot to do and fix critical stuff<br /><strong class="fw-bolder">I strongly recommend updating your game to this version if you're still on v0.2.12</strong></h5>
+		<ul>
+			<li>Installed app name wasn't showing correctly, now it should show fine</li>
+			<li>Internal consistency changes, including window titles and folder names being capitalized</li>
 		</ul>
 	</details>
 	<details id="game-0.2.12">
