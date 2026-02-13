@@ -17,9 +17,10 @@ import Profile from './components/pages/personal/Profile.vue';
 import Stats from './components/pages/personal/Stats.vue';
 import Settings from './components/pages/personal/Settings.vue';
 
+import NotFound from './components/pages/error/404.vue';
+import Result from './components/pages/error/dummy.vue';
 
-
-const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
 
 const router = createRouter({
 	history: createWebHistory(),
