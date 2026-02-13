@@ -17,7 +17,7 @@ import Profile from './components/pages/personal/Profile.vue';
 import Stats from './components/pages/personal/Stats.vue';
 import Settings from './components/pages/personal/Settings.vue';
 
-import NotFound from './components/pages/error/404.vue'
+
 
 const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 
@@ -38,7 +38,8 @@ const router = createRouter({
 		{ path: `${base}settings`, name: 'Settings', component: Settings },
 
 		// a little fix for refreshes and going to non-root links manually returning bullshit 404 errors
-		{ path: `${base}:pathMatch(.*)*`, name: 'NotFound', component: NotFound }
+		{ path: `${base}:pathMatch(.*)*`, name: 'NotFound', component: NotFound },
+		{ path: `${base}:queryParams(.*)`, name: 'Result', component: Result, props: true }
 	]
 });
 
