@@ -26,14 +26,14 @@
 				<tbody class="table-group-divider">
 					<tr>
 						<th scope="row">Move</th>
-						<td><kbd>&#x1f808;</kbd> <kbd>&#x1f80b;</kbd> <kbd>&#x1f809;</kbd> <kbd>&#x1f80a;</kbd> / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / <kbd>Numpad1</kbd> <kbd>Numpad2</kbd> <kbd>Numpad3</kbd> <kbd>Numpad5</kbd></td>
+						<td><kbd>&#x1f808;</kbd> <kbd>&#x1f80b;</kbd> <kbd>&#x1f809;</kbd> <kbd>&#x1f80a;</kbd> / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>5</kbd> <sub><em>(Numpad)</em></sub></td>
 						<td><span class="xbox-btns">S</span> / <span class="xbox-btns">&lt;</span></td>
 						<td><span class="ps-btns">S</span> / <span class="ps-btns">&lt;</span></td>
 					</tr>
 					<tr>
 						<th scope="row">Shoot</th>
 						<td><kbd>Y</kbd> / <kbd>Z</kbd></td>
-						<td class="xbox-btns">a</td>
+						<td><span class="xbox-btns">a</span> / <span class="switch-btns">b</span><sup>1</sup></td>
 						<td class="ps-btns">x</td>
 					</tr>
 					<tr>
@@ -45,16 +45,20 @@
 					<tr>
 						<th scope="row">Bomb</th>
 						<td><kbd>X</kbd></td>
-						<td><span class="xbox-btns">b</span></td>
+						<td><span class="xbox-btns">b</span> / <span class="switch-btns">a</span><sup>1</sup></td>
 						<td><span class="ps-btns">c</span></td>
 					</tr>
 					<tr>
 						<th scope="row">Pause</th>
 						<td><kbd>Esc</kbd></td>
 						<td>Start / <span class="xbox-btns">m</span></td>
-						<td>Start / <span class="ps-btns">o</span></td>
+						<td>Start / <span class="ps-btns">o</span><sup>2</sup></td>
 					</tr>
 				</tbody>
+				<caption class="pb-0">
+					<p class="mb-0"><sup>1</sup> A and B button positions are flipped on Nintendo controllers</p>
+					<p class="mb-0"><sup>2</sup> PS4 and later controllers have the Start button replaced as Options</p>
+				</caption>
 			</table>
 		</div>
 		<hr />
