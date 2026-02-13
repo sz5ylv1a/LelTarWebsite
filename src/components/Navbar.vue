@@ -11,7 +11,7 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 <template>
 	<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary border-bottom border-body">
 		<div class="container-xxl">
-			<router-link class="navbar-brand d-inline-flex gap-1 me-2" to="/"><img src="/res/icons/favicon.png" alt="Lel.tar" height="32"><span>Lel.tar</span><sup style="font-size:0.6rem;opacity:35%;margin-top:12px;">INDEV</sup></router-link>
+			<router-link class="navbar-brand d-inline-flex gap-1 me-2" :to="base"><img src="/res/icons/favicon.png" alt="Lel.tar" height="32"><span>Lel.tar</span><sup style="font-size:0.6rem;opacity:35%;margin-top:12px;">INDEV</sup></router-link>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
