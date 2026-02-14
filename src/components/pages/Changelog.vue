@@ -32,9 +32,11 @@ export default {
 		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.2.13 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
 			<li>Added an explosion animation to bullets that were affected by the bomb ability</li>
+			<li>Additionally, you will now earn a bonus for every bullet you've exploded</li>
 			<li>Added more menu sound effects and reworked handling of those</li>
-			<li>Add <em>(experimental)</em> controller support, finally</li>
-			<li>Restarting and exiting back to title is fully functional now!</li>
+			<li>Add <em>(experimental)</em> controller support, can't guarantee that it'll work</li>
+			<li>Grazing is now fully functional, which also gives a small score bonus the more bullets you graze</li>
+			<li>Restarting and exiting back to title is fully functional now</li>
 			<li>Fixed a bug with the bomb sound not playing at the last bomb used</li>
 			<li>Volume sliders finally work as they should now!</li>
 		</ul>
