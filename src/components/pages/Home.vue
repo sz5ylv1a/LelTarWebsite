@@ -15,7 +15,7 @@ const upsell_b2 = "placeholder image"
 		</div>
 		<div class="carousel-inner border-bottom border-body" style="box-shadow: 0 0 10px #000000c0;">
 			<div class="carousel-item active">
-				<img src="/res/images/carousel/slide1.png" class="d-block w-100" alt="Demo Image 1">
+				<img src="/res/images/carousel/slide1.png" class="d-block w-100" alt="In-game title screen background" style="filter:brightness(50%);">
 				<div class="carousel-content text-center">
 					<h1>Lel.tar</h1>
 					<p class="text-center">An arcade-style "bullet hell" Shoot 'em Up game, taking you to an adventure of searching for a stolen package...</p>
@@ -36,7 +36,7 @@ const upsell_b2 = "placeholder image"
 				<img src="/res/images/carousel/slide2.png" class="d-block w-100" alt="Demo Image 2">
 			</div>
 			<div class="carousel-item">
-				<img src="/res/images/carousel/slide3.png" class="d-block w-100" alt="Demo Image 3">
+				<img src="/res/images/carousel/slide3.png" class="d-block w-100" alt="Demonstration of the bomb mechanic: aftermath">
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev" data-bs-theme="light">
@@ -97,9 +97,6 @@ const upsell_b2 = "placeholder image"
 .carousel-content h1, .carousel-content p {
 	margin-top: initial;
 	color: #dee2e6;
-}
-.carousel-item img {
-	filter: brightness(50%);
 }
 .carousel-content {
 	position: absolute;
