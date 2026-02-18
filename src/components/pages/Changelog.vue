@@ -28,6 +28,12 @@ export default {
 		<h1><i class="bi bi-clock-history"></i> Changelog</h1>
 	<p>This page contains the changelog of the game and server, documenting every possible version.</p>
 	<hr>
+	<details id="game-0.3.0">
+		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.3.0 <span class="badge rounded-pill text-bg-secondary">Not released</span></summary>
+		<ul>
+			<li>Changelog coming soon...</li>
+		</ul>
+	</details>
 	<details id="game-0.2.13">
 		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.2.13 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
