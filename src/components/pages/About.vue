@@ -19,21 +19,21 @@
 					<tr>
 						<th scope="col">Action</th>
 						<th scope="col">Keyboard</th>
-						<th scope="col">Controller (Xbox/Nintendo)</th>
-						<th scope="col">Controller (PlayStation)</th>
+						<th scope="col">Controller (Xbox/Nintendo) <sup class="text-warning">3</sup></th>
+						<th scope="col">Controller (PlayStation) <sup class="text-warning">3</sup></th>
 					</tr>
 				</thead>
 				<tbody class="table-group-divider">
 					<tr>
 						<th scope="row">Move</th>
-						<td><kbd>&#x1f808;</kbd> <kbd>&#x1f80b;</kbd> <kbd>&#x1f809;</kbd> <kbd>&#x1f80a;</kbd> / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>5</kbd> <sub><em>(Numpad)</em></sub></td>
+						<td><kbd>&#x1f808;</kbd> <kbd>&#x1f80b;</kbd> <kbd>&#x1f809;</kbd> <kbd>&#x1f80a;</kbd> / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> / <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>5</kbd> <sub><em>(Numpad)</em></sub> <sup class="text-info">4</sup></td>
 						<td><span class="xbox-btns">S</span> / <span class="xbox-btns">&lt;</span></td>
 						<td><span class="ps-btns">S</span> / <span class="ps-btns">&lt;</span></td>
 					</tr>
 					<tr>
 						<th scope="row">Shoot</th>
 						<td><kbd>Y</kbd> / <kbd>Z</kbd></td>
-						<td><span class="xbox-btns">a</span> / <span class="switch-btns">b</span><sup>1</sup></td>
+						<td><span class="xbox-btns">a</span> / <span class="switch-btns">b</span> <sup>1</sup></td>
 						<td class="ps-btns">x</td>
 					</tr>
 					<tr>
@@ -45,19 +45,21 @@
 					<tr>
 						<th scope="row">Bomb</th>
 						<td><kbd>X</kbd></td>
-						<td><span class="xbox-btns">b</span> / <span class="switch-btns">a</span><sup>1</sup></td>
+						<td><span class="xbox-btns">b</span> / <span class="switch-btns">a</span> <sup>1</sup></td>
 						<td><span class="ps-btns">c</span></td>
 					</tr>
 					<tr>
 						<th scope="row">Pause</th>
 						<td><kbd>Esc</kbd></td>
 						<td>Start / <span class="xbox-btns">m</span></td>
-						<td>Start / <span class="ps-btns">o</span><sup>2</sup></td>
+						<td>Start / <span class="ps-btns">o</span> <sup>2</sup></td>
 					</tr>
 				</tbody>
 				<caption class="pb-0">
 					<p class="mb-0"><sup>1</sup> A and B button positions are flipped on Nintendo controllers</p>
 					<p class="mb-0"><sup>2</sup> PS4 and later controllers have the Start button replaced as Options</p>
+					<p class="mb-0 text-warning" style="opacity:85%;"><sup>3</sup> <strong>Controller support is experimental and might not work at all in most cases!!</strong></p>
+					<p class="mb-0 text-info" style="opacity:85%;"><sup>4</sup> <strong>Numpad keys are currently producing glitchy behaviour with movement when shooting and focusing are held down too.</strong> I recommend playing with arrow keys instead for now until further notice</p>
 				</caption>
 			</table>
 		</div>

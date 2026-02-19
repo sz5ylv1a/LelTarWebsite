@@ -49,6 +49,14 @@ const upsell_b2 = "placeholder image"
 		</button>
 	</div>
 	
+	<div class="pt-4 px-5">
+		<div class="container-xxl">
+			<div class="alert alert-info d-flex gap-2" role="alert">
+				<div>&#x2139;</div>
+				<div><strong>This game is currently in a very unfinished state!!</strong> If you have any high expectations about this, don't expect anything good, nor should you spam and complain in my inbox about that.</div>
+			</div>
+		</div>
+	</div>
 	<div class="text-start py-5 px-5">
 		<div class="container-xxl" id="upsell1">
 			<div class="row">
