@@ -30,8 +30,21 @@ export default {
 	<hr>
 	<details id="game-0.3.0">
 		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.3.0 <span class="badge rounded-pill text-bg-secondary">Not released</span></summary>
+		<h5>By far the biggest update yet!</h5>
 		<ul>
-			<li>Changelog coming soon...</li>
+			<li>Tweaked grazing a little bit</li>
+			<li>Reworked whole internal game logic</li>
+			<li>Raised minimum high score requirements from 50,000 to 100,000 due to major scoring changes</li>
+			<li>The main game has actual music now, not just the title screen</li>
+			<li>In addition, the whole background has been revamped too</li>
+			<li>The boss actually has a name now; her name is <strong>Ayane Hanako</strong></li>
+			<li>A new and much more simpler health system, as well as redesigned health and bomb bars entirely</li>
+			<li>You can now use whatever framerate you want, up to <strong>500+ FPS</strong>! ...as long as V-Sync is disabled, of course</li>
+		</ul>
+		<h6>Bugfixes:</h6>
+		<ul>
+			<li>Fix for shooting and focusing sometimes resetting your movement speed</li>
+			<li>Fix volume sliders randomly setting themselves to incorrect values</li>
 		</ul>
 	</details>
 	<details id="game-0.2.13">

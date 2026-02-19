@@ -120,7 +120,7 @@ function newDate(z) {return new Date(z)}
 				<div class="flex-fill">
 					<div class="d-flex gap-2">
 						<div>&#x2139;</div>
-						<div>Only scores above <strong>50,000</strong> and <strong>Easy</strong> difficulty can appear on the leaderboards!</div>
+						<div>Only scores above <strong>100,000</strong> and <strong>Easy</strong> difficulty can appear on the leaderboards!</div>
 					</div>
 				</div>
 				<div><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
