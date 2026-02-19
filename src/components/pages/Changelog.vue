@@ -34,6 +34,7 @@ export default {
 		<ul>
 			<li>Tweaked grazing a little bit</li>
 			<li>Reworked whole internal game logic</li>
+			<li>Added a new attack into the game</li>
 			<li>Raised minimum high score requirements from 50,000 to 100,000 due to major scoring changes</li>
 			<li>The main game has actual music now, not just the title screen</li>
 			<li>In addition, the whole background has been revamped too</li>
