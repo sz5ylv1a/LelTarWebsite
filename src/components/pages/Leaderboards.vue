@@ -40,11 +40,11 @@ export default {
 			}
 		}
 		
-		fetchFromApi(apiUrl+'Difficulties', this.difficulties);
-		fetchFromApi(apiUrl+'Countries', this.countries);
-		fetchFromApi(apiUrl+'Users', this.users);
-		fetchFromApi(apiUrl+'Lbs', this.leaderboardEntries);
 		fetchFromApi(monthsJson, this.monthsNames);
+		fetchFromApi(apiUrl+'dummy/difficulties', this.difficulties);
+		fetchFromApi(apiUrl+'dummy/countries', this.countries);
+		fetchFromApi(apiUrl+'accMgmt/view', this.users);
+		fetchFromApi(apiUrl+'lbs/all', this.leaderboardEntries);
 	}
 }
 
@@ -96,7 +96,7 @@ function newDate(z) {return new Date(z)}
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li><h6 class="dropdown-header">Difficulty</h6></li>
-						<li v-for="d in toRaw(difficulties.flat())" :key="d.id"><button class="dropdown-item">{{ d.icon }} {{ d.difficultyName }}</button></li>
+						<li v-for="d in toRaw(difficulties.flat())" :key="d.id"><button class="dropdown-item" v-if="d.id != 1">{{ d.icon }} {{ d.difficultyName }}</button></li>
 						<li><hr class="dropdown-divider" /></li>
 						<li><h6 class="dropdown-header">Country</h6></li>
 						<li v-for="c in toRaw(countries.flat())" :key="c.id"><button class="dropdown-item">{{ c.flag }} {{ c.name }}</button></li>

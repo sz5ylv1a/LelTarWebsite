@@ -3,7 +3,7 @@ export default {
 	data() {
 		return {
 			latestGameVer: "0.2.13",
-			latestApiVer: "1.0",
+			latestApiVer: "2.0",
 		}
 	},
 	mounted() {
@@ -48,6 +48,15 @@ export default {
 			<li>Fix volume sliders randomly setting themselves to incorrect values</li>
 		</ul>
 	</details>
+	<details id="api-2.0">
+		<summary class="h2"><i class="bi bi-database"></i> API - v2.0 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
+		<ul>
+			<li>Major security changes</li>
+			<li>An actually functional auth</li>
+			<li>A way better structure for managing stuff like submission and account settings <em>(coming soon)</em></li>
+			<li class="mt-4">oh yeah and v1 is fully read-only now, sorry if you were using that</li>
+		</ul>
+	</details>
 	<details id="game-0.2.13">
 		<summary class="h2"><i class="bi bi-controller"></i> Game - v0.2.13 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
 		<ul>
@@ -62,7 +71,7 @@ export default {
 		</ul>
 	</details>
 	<details id="api-1.0">
-		<summary class="h2"><i class="bi bi-database"></i> API - v1.0 <span class="badge rounded-pill text-bg-success">Latest</span></summary>
+		<summary class="h2"><i class="bi bi-database"></i> API - v1.0 <span class="badge rounded-pill text-bg-warning">Deprecated</span></summary>
 		<ul>
 			<li>Initial release...?</li>
 		</ul>
