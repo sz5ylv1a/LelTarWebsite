@@ -43,7 +43,7 @@ export default {
 		fetchFromApi(monthsJson, this.monthsNames);
 		fetchFromApi(apiUrl+'dummy/difficulties', this.difficulties);
 		fetchFromApi(apiUrl+'dummy/countries', this.countries);
-		fetchFromApi(apiUrl+'accMgmt/view', this.users);
+		fetchFromApi(apiUrl+'accMgmt/view/all', this.users);
 		fetchFromApi(apiUrl+'lbs/all', this.leaderboardEntries);
 	}
 }
