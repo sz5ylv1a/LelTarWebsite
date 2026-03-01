@@ -107,8 +107,8 @@ function newDate(z) {return new Date(z)}
 						<i class="bi bi-sort-up"></i> Order by
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end order-by-menu">
-						<li><button id="ordopt-1" @click="updateSorting(1)" class="dropdown-item">Score and Difficulty</button></li>
-						<li><button id="ordopt-2" @click="updateSorting(2)" class="dropdown-item">Only by Score</button></li>
+						<li><button id="ordopt-1" @click="updateSorting(0)" class="dropdown-item">Score and Difficulty</button></li>
+						<li><button id="ordopt-2" @click="updateSorting(1)" class="dropdown-item">Only by Score</button></li>
 					</ul>
 				</div>
 			</div>
