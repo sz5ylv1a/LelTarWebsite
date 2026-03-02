@@ -30,7 +30,7 @@ defineProps({
 <template>
 	<div class="container-xxl" v-if="loggedIn === false">
 		<h1 class="text-center mb-3">Create an account</h1>
-		<form class="mb-2 needs-validation" id="registration" :action="import.meta.env.VITE_API_URL+'auth/register'" method="post" novalidate>
+		<form class="mb-2 needs-validation" id="registration" method="post" novalidate>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required />
 				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>

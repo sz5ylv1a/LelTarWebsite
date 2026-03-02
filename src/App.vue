@@ -1,18 +1,32 @@
 <script setup lang="js">
+import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
-let isLoggedIn = true
-let username = localStorage.getItem('user_name')
+let isLoggedIn = ref(true)
+const user = ref(JSON.parse(localStorage.getItem("user_data") || "null"))
+let username = ""
+try {
+	if (user.value === "null") {
+		username = ""
+	}
+	else {
+		username = user.value.username
+	}
+}
+catch (e) {
+	console.error(e);
+}
 
-if (username !== "") {isLoggedIn = true} else {isLoggedIn = false}
+if (user.value !== "null") {isLoggedIn.value = true}
+else {isLoggedIn.value = false}
 </script>
 
 <template>
-	<navbar current-page="Home" :logged-in="isLoggedIn" :user="username" />
+	<navbar current-page="Home" :logged-in="isLoggedIn.value" :user="username" />
 	<div class="page-shit">
 		<div class="content mb-5">
-			<router-view :logged-in="isLoggedIn" :user="username" />
+			<router-view :logged-in="isLoggedIn.value" :user="username" />
 		</div>
 		<page-footer entity-name="LohinSys" :f-year="2024" :l-year="2026" />
 	</div>
