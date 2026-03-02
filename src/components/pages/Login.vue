@@ -1,4 +1,26 @@
 <script setup lang="js">
+import { ref } from 'vue';
+import { useAuthStore } from '../../scripts/api.js';
+
+const form = ref({
+	username: '',
+	password: ''
+})
+const loading = ref(false)
+const error = ref(null)
+
+async function submit() {
+	loading.value = true
+	error.value = null
+	try {
+		await useAuthStore().login(form.value.username, form.value.password)
+	} catch (e) {
+		error.value = e?.response?.data?.message || "Registration failed. Please try again later."
+	} finally {
+		loading.value = false
+	}
+}
+
 defineProps({
 	loggedIn: Boolean
 })
