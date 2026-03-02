@@ -3,7 +3,7 @@ import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
 let isLoggedIn = true
-let username = ""
+let username = localStorage.getItem('user_name')
 
 if (username !== "") {isLoggedIn = true} else {isLoggedIn = false}
 </script>
