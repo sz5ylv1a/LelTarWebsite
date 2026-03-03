@@ -17,10 +17,12 @@ async function submit() {
 		loading.value = true
 		error.value = null
 		try {
-			await useAuthStore().register(form.value.username, form.value.password)
+			await useAuthStore().register(form.value.username, form.value.email, form.value.password)
 		}
 		catch (e) {
 			error.value = e?.response?.data?.message || "Registration failed. Please try again later."
+			console.error(error.value)
+			console.error(e)
 		}
 		finally {
 			loading.value = false
@@ -29,9 +31,11 @@ async function submit() {
 	else {
 		if (form.value.password === form.value.passwordConfirm) {
 			error.value = e?.response?.data?.message || "Inputted passwords do not match!"
+			console.error(error.value)
 		}
 		else if (!form.value.captcha) {
 			error.value = e?.response?.data?.message || "Please fill in the captcha!"
+			console.error(error.value)
 		}
 	}
 }

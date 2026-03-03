@@ -17,9 +17,12 @@ async function submit() {
 		error.value = null
 		try {
 			await useAuthStore().login(form.value.username, form.value.password)
-		} catch (e) {
+		}
+		catch (e) {
 			error.value = e?.response?.data?.message || "Invalid username or password."
-		} finally {
+			console.error(error.value)
+		}
+		finally {
 			loading.value = false
 		}
 	}

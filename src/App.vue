@@ -4,34 +4,39 @@ import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
 let isLoggedIn = ref(false)
-const user = ref("null")
-let username = ""
-try {
-	if (localStorage.getItem("user_data") != null) {
-		user.value = JSON.parse(localStorage.getItem("user_data") || "null");
-		isLoggedIn.value = true;
+let user = ref("null")
+let username = ref("")
+
+async function refreshStoredLoginInfo() {
+	try {
+		if (localStorage.getItem("user_data") != null) {
+			user.value = JSON.parse(localStorage.getItem("user_data") || "null");
+			isLoggedIn.value = true;
+		}
+		else {
+			user.value = "null"
+			isLoggedIn.value = false;
+		}
+		if (user.value === "null") {
+			username.value = ""
+		}
+		else {
+			username = user.value.username
+		}
 	}
-	else {
-		user.value = "null"
-		isLoggedIn.value = false;
-	}
-	if (user.value === "null") {
-		username = ""
-	}
-	else {
-		username = user.value.username
+	catch (e) {
+		console.error(e);
 	}
 }
-catch (e) {
-	console.error(e);
-}
+
+refreshStoredLoginInfo()
 </script>
 
 <template>
-	<navbar current-page="Home" :logged-in="isLoggedIn.value" :user="username" />
+	<navbar current-page="Home" :logged-in="isLoggedIn.value" :user="username.value" />
 	<div class="page-shit">
 		<div class="content mb-5">
-			<router-view :logged-in="isLoggedIn.value" :user="username" />
+			<router-view :logged-in="isLoggedIn.value" :user="username.value" />
 		</div>
 		<page-footer entity-name="LohinSys" :f-year="2024" :l-year="2026" />
 	</div>
