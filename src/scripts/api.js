@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 import ax from "axios";
 import r from "./router.js";
 
+const baseRoute = import.meta.env.VITE_BASE_ROUTE
+
 const api = ax.create({
 	baseURL: import.meta.env.VITE_API_URL,
 	timeout: 30000,
@@ -66,7 +68,7 @@ export const useAuthStore = defineStore("auth", () => {
 		localStorage.setItem("user_token", data.token);
 		localStorage.setItem("user_data", JSON.stringify(user.value));
 
-		r.push("/");
+		r.push(`/${baseRoute}/`);
 	}
 
 	async function register(username, email, password) {
@@ -84,7 +86,7 @@ export const useAuthStore = defineStore("auth", () => {
 		localStorage.setItem("user_token", data.token);
 		localStorage.setItem("user_data", JSON.stringify(user.value));
 
-		r.push("/");
+		r.push(`/${baseRoute}/`);
 	}
 
 	async function logout() {
@@ -94,7 +96,7 @@ export const useAuthStore = defineStore("auth", () => {
 		localStorage.removeItem("user_token");
 		localStorage.removeItem("user_data");
 
-		r.push("/");
+		r.push(`/${baseRoute}/`);
 	}
 
 	return { token, user, isLoggedIn, assignedRole, login, register, logout };
