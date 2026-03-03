@@ -44,7 +44,7 @@ defineProps({
 <template>
 	<div class="container-xxl" v-if="!loggedIn">
 		<h1 class="text-center mb-3">Create an account</h1>
-		<form class="mb-2 needs-validation" id="registration" method="post" novalidate>
+		<form class="mb-2 needs-validation" id="registration" method="post" @submit.prevent="submit" novalidate>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />
 				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>

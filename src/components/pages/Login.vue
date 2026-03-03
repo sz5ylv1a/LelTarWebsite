@@ -4,20 +4,24 @@ import { useAuthStore } from '../../scripts/api.js';
 
 const form = ref({
 	username: '',
-	password: ''
+	password: '',
+	captcha: false,
+	stayLoggedIn: false
 });
 const loading = ref(false);
 const error = ref(null);
 
 async function submit() {
-	loading.value = true
-	error.value = null
-	try {
-		await useAuthStore().login(form.value.username, form.value.password)
-	} catch (e) {
-		error.value = e?.response?.data?.message || "Invalid username or password."
-	} finally {
-		loading.value = false
+	if (form.value.captcha) {
+		loading.value = true
+		error.value = null
+		try {
+			await useAuthStore().login(form.value.username, form.value.password)
+		} catch (e) {
+			error.value = e?.response?.data?.message || "Invalid username or password."
+		} finally {
+			loading.value = false
+		}
 	}
 }
 
@@ -29,7 +33,7 @@ defineProps({
 <template>
 	<div class="container-xxl" v-if="!loggedIn">
 		<h1 class="text-center mb-3">Please log in</h1>
-		<form class="mb-2 needs-validation" id="accountLogin" method="post" novalidate>
+		<form class="mb-2 needs-validation" id="accountLogin" method="post" @submit.prevent="submit" novalidate>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />
 				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>
@@ -41,12 +45,12 @@ defineProps({
 			</div>
 			<div class="p-4 bg-body-tertiary mb-3">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="captcha" />
+					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="form.captcha" />
 					<label class="form-check-label ps-3" for="captcha">I'm not a robot</label>
 				</div>
 			</div>
 			<div class="form-check mb-3">
-				<input class="form-check-input" type="checkbox" name="stayLoggedIn" id="stayLoggedIn" />
+				<input class="form-check-input" type="checkbox" name="stayLoggedIn" id="stayLoggedIn" v-model="form.stayLoggedIn" />
 				<label class="form-check-label" for="stayLoggedIn"><i>Stay logged in</i></label>
 			</div>
 			<div class="text-center">
