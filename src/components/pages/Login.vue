@@ -5,9 +5,9 @@ import { useAuthStore } from '../../scripts/api.js';
 const form = ref({
 	username: '',
 	password: ''
-})
-const loading = ref(false)
-const error = ref(null)
+});
+const loading = ref(false);
+const error = ref(null);
 
 async function submit() {
 	loading.value = true
@@ -15,7 +15,7 @@ async function submit() {
 	try {
 		await useAuthStore().login(form.value.username, form.value.password)
 	} catch (e) {
-		error.value = e?.response?.data?.message || "Registration failed. Please try again later."
+		error.value = e?.response?.data?.message || "Invalid username or password."
 	} finally {
 		loading.value = false
 	}
@@ -27,20 +27,21 @@ defineProps({
 </script>
 
 <template>
-	<div class="container-xxl" v-if="loggedIn === false">
+	<div class="container-xxl" v-if="!loggedIn">
 		<h1 class="text-center mb-3">Please log in</h1>
 		<form class="mb-2 needs-validation" id="accountLogin" method="post" novalidate>
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required />
+				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />
 				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password"
+					required v-model="form.password" />
 				<label for="password" class="form-label"><i class="bi bi-lock-fill"></i> Password</label>
 			</div>
 			<div class="p-4 bg-body-tertiary mb-3">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required />
+					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="captcha" />
 					<label class="form-check-label ps-3" for="captcha">I'm not a robot</label>
 				</div>
 			</div>
@@ -57,7 +58,7 @@ defineProps({
 	<div class="container-xxl text-center" v-else>
 		<h1>You've already logged in!</h1>
 		<p class="text-center">Log out or clear all cookies and data if you believe this is an error.</p>
-		<a :href="history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
+		<a href="javascript:history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
 	</div>
 </template>
 
@@ -66,11 +67,13 @@ form {
 	margin: auto;
 	max-width: 400px;
 }
+
 .no-account {
 	text-align: center;
 	font-style: italic;
 	opacity: 50%;
 }
+
 input#captcha {
 	scale: 2;
 }

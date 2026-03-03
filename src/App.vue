@@ -3,10 +3,18 @@ import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
-let isLoggedIn = ref(true)
-const user = ref(JSON.parse(localStorage.getItem("user_data") || "null"))
+let isLoggedIn = ref(false)
+const user = ref("null")
 let username = ""
 try {
+	if (localStorage.getItem("user_data") != null) {
+		user.value = JSON.parse(localStorage.getItem("user_data") || "null");
+		isLoggedIn.value = true;
+	}
+	else {
+		user.value = "null"
+		isLoggedIn.value = false;
+	}
 	if (user.value === "null") {
 		username = ""
 	}
@@ -17,9 +25,6 @@ try {
 catch (e) {
 	console.error(e);
 }
-
-if (user.value !== "null") {isLoggedIn.value = true}
-else {isLoggedIn.value = false}
 </script>
 
 <template>
