@@ -6,7 +6,7 @@ const form = ref({
 	username: '',
 	email: '',
 	password: '',
-	passwordConfirm: "",
+	passwordConfirm: '',
 	captcha: false
 });
 const loading = ref(false);
@@ -77,25 +77,24 @@ defineProps({
 	</div>
 	<div class="container-xxl text-center" v-else>
 		<h1>You've already logged in!</h1>
-		<p class="text-center">Logged in users cannot register new accounts.<br />You must log out or clear all cookies
-			and data before you do it, or if you believe this is an error.</p>
-			<a href="javascript:history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
-		</div>
-	</template>
-	
-	<style scoped>
-	form {
-		margin: auto;
-		max-width: 400px;
-	}
-	
-	.no-account {
-		text-align: center;
-		font-style: italic;
-		opacity: 50%;
-	}
-	
-	input#captcha {
-		scale: 2;
-	}
+		<p class="text-center">Logged in users cannot register new accounts.<br />You must log out or clear all cookies and data before you do it, or if you believe this is an error.</p>
+		<a href="javascript:history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
+	</div>
+</template>
+
+<style scoped>
+form {
+	margin: auto;
+	max-width: 400px;
+}
+
+.no-account {
+	text-align: center;
+	font-style: italic;
+	opacity: 50%;
+}
+
+input#captcha {
+	scale: 2;
+}
 </style>
