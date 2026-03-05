@@ -41,6 +41,7 @@ export default {
 			<li>The boss actually has a name now; her name is <strong>Ayane Hanako</strong></li>
 			<li>A new and much more simpler health system, as well as redesigned health and bomb bars entirely</li>
 			<li>You can now use whatever framerate you want, up to <strong>500+ FPS</strong>! ...as long as V-Sync is disabled, of course</li>
+			<li>Actually implemented online account support instead of using a fake dummy login prompt</li>
 		</ul>
 		<h6>Bugfixes:</h6>
 		<ul>
