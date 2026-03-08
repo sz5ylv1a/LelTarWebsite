@@ -1,6 +1,5 @@
 <script setup lang="js">
 import { ref } from 'vue';
-import { useAuthStore } from '../../scripts/api.js';
 
 const form = ref({
 	username: '',
@@ -11,13 +10,31 @@ const form = ref({
 });
 const loading = ref(false);
 const error = ref(null);
+const dat = ref();
+const responseNum = ref(0);
 
 async function submit() {
 	if (form.value.password === form.value.passwordConfirm && !!form.value.captcha) {
 		loading.value = true
 		error.value = null
 		try {
-			await useAuthStore().register(form.value.username, form.value.email, form.value.password)
+			const response = await fetch(`${import.meta.env.VITE_API_URL}auth/register`, {
+				method: "POST",
+				headers: {
+					'Accept': "application/json",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					'username': form.value.username,
+					'email': form.value.email,
+					'password': form.value.password,
+				}),
+			}).then((responses) => {
+				responseNum.value = responses.status;
+				dat.value = responses.json();
+				return responses.json();
+			});
+			console.debug(response);
 		}
 		catch (e) {
 			error.value = e?.response?.data?.message || "Registration failed. Please try again later."
