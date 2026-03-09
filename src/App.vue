@@ -6,6 +6,7 @@ import PageFooter from './components/PageFooter.vue';
 let isLoggedIn = ref(false)
 let user = ref("null")
 let username = ref("")
+let userId = ref(0)
 
 async function refreshStoredLoginInfo() {
 	try {
@@ -21,7 +22,8 @@ async function refreshStoredLoginInfo() {
 			username.value = ""
 		}
 		else {
-			username = user.value.username
+			username.value = user.value.username
+			userId.value = user.value.id
 		}
 	}
 	catch (e) {

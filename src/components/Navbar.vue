@@ -6,6 +6,12 @@ defineProps({
 })
 
 const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
+
+async function logoff() {
+	localStorage.removeItem("user_token");
+	localStorage.removeItem("user_data");
+	window.location.href = `https://szb3nc3.github.io${base}`;
+}
 </script>
 
 <template>
@@ -46,7 +52,7 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 							<li><hr class="dropdown-divider" /></li>
 							<li><router-link class="dropdown-item" :to="base+'settings'"><i class="bi bi-sliders2" /> Settings</router-link></li>
 							<li><hr class="dropdown-divider" /></li>
-							<li><button class="dropdown-item" id="logout-btn"><i class="bi bi-box-arrow-left" /> Log out</button></li>
+							<li><button class="dropdown-item" id="logout-btn" @click="logoff()"><i class="bi bi-box-arrow-left" /> Log out</button></li>
 						</ul>
 					</div>
 				</div>

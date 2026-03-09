@@ -26,7 +26,10 @@ export default {
 		const apiUrl = import.meta.env.VITE_API_URL
 		async function fetchFromApi(target, output) {
 			try {
-				const response = await fetch(target);
+				const response = await fetch(target, {
+					method: 'GET',
+					headers: {'Content-Type': 'application/json'}
+				});
 				if (!response.ok) {
 					throw new Error("HTTP Error! Status:",response.status)
 				}

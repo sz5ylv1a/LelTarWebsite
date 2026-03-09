@@ -1,36 +1,60 @@
 <script setup lang="js">
-import { ref } from 'vue';
-import { useAuthStore } from '../../scripts/api.js';
+import { ref, toRaw } from "vue";
 
 const form = ref({
-	username: '',
-	password: '',
+	username: "",
+	password: "",
 	captcha: false,
-	stayLoggedIn: false
+	stayLoggedIn: false,
 });
 const loading = ref(false);
 const error = ref(null);
+const dat = ref();
+const responseNum = ref(0);
 
 async function submit() {
 	if (form.value.captcha) {
-		loading.value = true
-		error.value = null
+		loading.value = true;
+		error.value = null;
 		try {
-			await useAuthStore().login(form.value.username, form.value.password)
+			const response = await fetch(`${import.meta.env.VITE_API_URL}auth/login`, {
+				method: "POST",
+				headers: {
+					'Accept': "application/json",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					'username': form.value.username,
+					'password': form.value.password,
+				}),
+			}).then((responses) => {
+				responseNum.value = responses.status;
+				return responses.json();
+			});
+			if (responseNum.value === 200) {dat.value = response}
+			console.debug(toRaw(dat.value));
 		}
 		catch (e) {
-			error.value = e?.response?.data?.message || "Invalid username or password."
-			console.error(error.value)
+			error.value = e?.response?.data?.message || "Invalid username or password.";
+			console.error(error.value);
+			console.error(e);
 		}
 		finally {
 			loading.value = false
+			// if (error.value === null) {
+			// 	window.location.href = `https://szb3nc3.github.io${base}`;
+			// }
 		}
+	}
+	else {
+		error.value = e?.response?.data?.message || "Please fill in the captcha!"
+		console.error(error.value)
 	}
 }
 
 defineProps({
-	loggedIn: Boolean
-})
+	loggedIn: Boolean,
+});
 </script>
 
 <template>
@@ -42,8 +66,7 @@ defineProps({
 				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="password" name="password" placeholder="Password"
-					required v-model="form.password" />
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password" required v-model="form.password" />
 				<label for="password" class="form-label"><i class="bi bi-lock-fill"></i> Password</label>
 			</div>
 			<div class="p-4 bg-body-tertiary mb-3">
@@ -57,7 +80,7 @@ defineProps({
 				<label class="form-check-label" for="stayLoggedIn"><i>Stay logged in</i></label>
 			</div>
 			<div class="text-center">
-				<input class="btn btn-success btn-lg" type="submit" value="Login" accesskey="enter">
+				<input class="btn btn-success btn-lg" type="submit" value="Login" accesskey="enter" :disabled="loading.value">
 			</div>
 		</form>
 		<p class="no-account">Don't have an account? <a href="/register">Register!</a></p>
