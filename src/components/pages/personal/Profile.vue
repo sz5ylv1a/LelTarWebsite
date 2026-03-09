@@ -7,7 +7,7 @@ defineProps({
 
 <template>
 	<div class="container-xxl" v-if="loggedIn">
-		<h1><i class="bi bi-person-circle" /> {{ user }}</h1>
+		<h1><i class="bi bi-person-circle" /><span>{{ user }}</span></h1>
 		<p>Created at: idk lol</p>
 		<hr />
 		<p>Nothing to see here though...</p>

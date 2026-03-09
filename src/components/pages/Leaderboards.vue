@@ -91,7 +91,7 @@ function newDate(z) {return new Date(z)}
 <template>
 	<div class="container-xxl">
 		<div class="d-flex align-items-center" style="margin-top:20px;">
-			<div class="flex-fill"><h1 class="mb-0"><i class="bi bi-bar-chart-line-fill"></i> Leaderboards</h1></div>
+			<div class="flex-fill"><h1 class="mb-0"><i class="bi bi-bar-chart-line-fill" /><span>Leaderboards</span></h1></div>
 			<div class="d-flex gap-1 text-end">
 				<div class="btn-group dropdown" id="filter-by">
 					<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -102,7 +102,7 @@ function newDate(z) {return new Date(z)}
 						<li v-for="d in toRaw(difficulties.flat())" :key="d.id"><button class="dropdown-item" v-if="d.id != 1">{{ d.icon }} {{ d.difficultyName }}</button></li>
 						<li><hr class="dropdown-divider" /></li>
 						<li><h6 class="dropdown-header">Country</h6></li>
-						<li v-for="c in toRaw(countries.flat())" :key="c.id"><button class="dropdown-item">{{ c.flag }} {{ c.name }}</button></li>
+						<li v-for="c in toRaw(countries.flat())" :key="c.id"><button class="dropdown-item" v-if="c.id != 0">{{ c.flag }} {{ c.name }}</button></li>
 					</ul>
 				</div>
 				<div class="btn-group dropdown" id="order-by">
@@ -168,7 +168,9 @@ function newDate(z) {return new Date(z)}
 </template>
 
 <style scoped>
-h1 {margin-top:0;}
+h1 {
+	margin-top: 0;
+}
 #filter-by .dropdown-menu {
 	max-height: 70vh;
 	overflow: scroll;

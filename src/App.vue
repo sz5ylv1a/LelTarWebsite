@@ -50,6 +50,8 @@ refreshStoredLoginInfo()
 }
 h1 {
 	margin-top: 20px;
+	display: flex;
+	gap: 14px;
 }
 .page-shit {
 	display: flex;

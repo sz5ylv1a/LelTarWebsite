@@ -32,7 +32,7 @@ export default {
 
 <template>
 	<div class="container-xxl">
-		<h1><i class="bi bi-download"></i> Downloads</h1>
+		<h1><i class="bi bi-download" /><span>Downloads</span></h1>
 		<p>This download page is for all possible downloads. Make sure you pick the right platform and CPU architecture. <em class="text-secondary">(ARM64 is not supported, this is an x86 household)</em></p>
 		<div class="alert alert-info d-flex gap-2" role="alert">
 			<div>&#x2139;</div>
@@ -86,10 +86,10 @@ export default {
 				<i class="bi bi-archive"></i> Portable (64-bit, .tar.gz)
 			</a>
 		</div>
-		<p>SHA-256 Checksum: <code v-if="checksum.length != 0">{{ checksum[0].linux.bin }}</code><code class="placeholder-wave" v-else><span class="placeholder col-5"></span></code></p>
+		<p class="text-start">SHA-256 Checksum: <code v-if="checksum.length != 0">{{ checksum[0].linux.bin }}</code><code class="placeholder-wave" v-else><span class="placeholder col-5"></span></code></p>
 		<hr />
 		<h2 id="macos"><i class="bi bi-apple"></i> macOS</h2>
-		<p>No. Not happening. <em>(just use wine/proton or something lmfao)</em></p>
+		<p class="text-start">No. Not happening. <em>(just use wine/proton or something lmfao)</em></p>
 		<hr />
 		<h2 id="sourcecode"><i class="bi bi-code-slash"></i> Source Code</h2>
 		<p>Want the source code for this game? Including every single asset and janky code?</p>
@@ -108,6 +108,10 @@ export default {
 </template>
 
 <style scoped>
+h2 {
+	display: inline-flex;
+	gap: 10px;
+}
 h5 {
 	margin-bottom: 0;
 }

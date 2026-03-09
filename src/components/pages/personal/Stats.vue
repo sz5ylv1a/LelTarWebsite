@@ -6,7 +6,7 @@ defineProps({
 
 <template>
 	<div class="container-xxl" v-if="loggedIn">
-		<h1><i class="bi bi-graph-up" /> Statistics</h1>
+		<h1><i class="bi bi-graph-up" /><span>Statistics</span></h1>
 		<p>Nothing to see here yet...</p>
 	</div>
 	<div class="container-xxl text-center" v-else>

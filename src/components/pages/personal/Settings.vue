@@ -6,7 +6,7 @@ defineProps({
 
 <template>
 	<div class="container-xxl" v-if="loggedIn">
-		<h1><i class="bi bi-sliders2" /> Settings</h1>
+		<h1><i class="bi bi-sliders2" /><span>Settings</span></h1>
 		<p>All what <em>could</em> be changed if this was ever implemented properly...</p>
 		<hr>
 		<h3>Update User Info</h3>

@@ -102,6 +102,10 @@ const upsell_b2 = "placeholder image"
 </template>
 
 <style scoped>
+h1 {
+	display: unset;
+	gap: unset;
+}
 .carousel-content h1, .carousel-content p {
 	margin-top: initial;
 	color: #dee2e6;
