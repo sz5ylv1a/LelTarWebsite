@@ -103,8 +103,9 @@ const upsell_b2 = "placeholder image"
 
 <style scoped>
 h1 {
-	display: unset;
-	gap: unset;
+	margin-bottom: 4px;
+	display: block;
+	gap: 0;
 }
 .carousel-content h1, .carousel-content p {
 	margin-top: initial;
