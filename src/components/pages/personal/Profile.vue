@@ -1,14 +1,21 @@
 <script setup lang="js">
-defineProps({
+const props = defineProps({
 	loggedIn: Boolean,
 	user: String
 })
+
+if (!props.loggedIn) {
+	console.info("You are not logged in!")
+}
 </script>
 
 <template>
-	<div class="container-xxl" v-if="loggedIn">
-		<h1><i class="bi bi-person-circle" /><span>{{ user }}</span></h1>
-		<p>Created at: idk lol</p>
+	<div class="container-xxl" v-if="props.loggedIn">
+		<h1><i class="bi bi-person-circle" /><span>{{ props.user }}</span></h1>
+		<ul>
+			<li>User ID: Unknown</li>
+			<li>Created at: Unknown</li>
+		</ul>
 		<hr />
 		<p>Nothing to see here though...</p>
 	</div>

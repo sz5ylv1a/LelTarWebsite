@@ -95,7 +95,7 @@ function newDate(z) {return new Date(z)}
 			<div class="d-flex gap-1 text-end">
 				<div class="btn-group dropdown" id="filter-by">
 					<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="bi bi-funnel-fill"></i> Filter by
+						<span><i class="bi bi-funnel-fill" /> Filter by</span>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li><h6 class="dropdown-header">Difficulty</h6></li>
@@ -107,7 +107,7 @@ function newDate(z) {return new Date(z)}
 				</div>
 				<div class="btn-group dropdown" id="order-by">
 					<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="bi bi-sort-up"></i> Order by
+						<span><i class="bi bi-sort-up" /> Order by</span>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end order-by-menu">
 						<li><button id="ordopt-1" @click="updateSorting(0)" class="dropdown-item">Score and Difficulty</button></li>

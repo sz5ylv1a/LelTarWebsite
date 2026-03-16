@@ -1,5 +1,5 @@
 <script setup lang="js">
-import { ref, toRaw } from "vue";
+import { ref } from "vue";
 
 const form = ref({
 	username: "",
@@ -31,8 +31,17 @@ async function submit() {
 				responseNum.value = responses.status;
 				return responses.json();
 			});
-			if (responseNum.value === 200) {dat.value = response}
-			console.debug(toRaw(dat.value));
+			if (responseNum.value === 200) {
+				console.info("Login success!")
+				dat.value = response
+				localStorage.setItem("user_token",dat.value.token);
+				localStorage.setItem("user_data",`{
+					"username": "${form.value.username}",
+					"password": "${form.value.password}",
+					"id": ${dat.value.id},
+					"role": "${dat.value.role}"
+				}`.replaceAll("	","").replaceAll(" ","").replaceAll("\n",""));	// the replaceAlls are only for minifying the json as much as possible
+			}
 		}
 		catch (e) {
 			error.value = e?.response?.data?.message || "Invalid username or password.";
@@ -47,7 +56,7 @@ async function submit() {
 		}
 	}
 	else {
-		error.value = e?.response?.data?.message || "Please fill in the captcha!"
+		error.value = "Please fill in the captcha!"
 		console.error(error.value)
 	}
 }
@@ -59,7 +68,7 @@ defineProps({
 
 <template>
 	<div class="container-xxl" v-if="!loggedIn">
-		<h1 class="text-center mb-3">Please log in</h1>
+		<h1 class="text-center mb-3 d-block">Please log in</h1>
 		<form class="mb-2 needs-validation" id="accountLogin" method="post" @submit.prevent="submit" novalidate>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />

@@ -1,9 +1,10 @@
 <script setup lang="js">
-defineProps({
+const props = defineProps({
 	currentPage: String,
 	loggedIn: Boolean,
 	user: String
 })
+const emit = defineEmits(['update'])
 
 const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 
@@ -12,6 +13,9 @@ async function logoff() {
 	localStorage.removeItem("user_data");
 	window.location.href = `https://szb3nc3.github.io${base}`;
 }
+
+console.log(props.loggedIn)
+console.log(props.user)
 </script>
 
 <template>
@@ -39,13 +43,13 @@ async function logoff() {
 						<router-link class="text-warning nav-link lb-link" :to="base+'leaderboards'">Leaderboards</router-link>
 					</li>
 				</ul>
-				<div class="d-flex justify-content-center justify-content-lg-end gap-1" id="account-section" v-if="!loggedIn">
+				<div class="d-flex justify-content-center justify-content-lg-end gap-1" id="account-section" v-if="!props.loggedIn">
 					<router-link class="btn btn-outline-secondary" role="button" :to="base+'login'">Login</router-link>
 					<router-link class="btn btn-outline-success" role="button" :to="base+'register'">Register</router-link>
 				</div>
 				<div class="d-flex justify-content-end gap-1" id="account-section" v-else>
 					<div class="btn-group">
-						<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="border:none;"><span class="account-circle"><i class="bi bi-person-circle" /></span><span class="ps-2">{{ user }}</span></button>
+						<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="border:none;"><span class="account-circle"><i class="bi bi-person-circle" /></span><span class="ps-2">{{ props.user }}</span></button>
 						<ul class="dropdown-menu dropdown-menu-end">
 							<li><router-link class="dropdown-item" :to="base+'profile'"><i class="bi bi-person-fill" /> Profile</router-link></li>
 							<li><router-link class="dropdown-item" :to="base+'stats'"><i class="bi bi-graph-up" /> Statistics</router-link></li>

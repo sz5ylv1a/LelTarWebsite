@@ -39,17 +39,17 @@ export default {
 			<div><strong>This game is currently in a very unfinished state!!</strong> If you have any high expectations about this, don't expect anything good, nor should you spam and complain in my inbox about that.</div>
 		</div>
 		<hr />
-		<h2 id="windows"><i class="bi bi-windows"></i> Windows</h2>
+		<h2 id="windows"><i class="bi bi-windows" /> Windows</h2>
 		<p>This was tested only on <strong>Windows 10-11</strong>, but it might work on Windows 7-8.x too. All installers were built using NSIS.</p>
 		<div class="d-flex gap-1 mb-1">
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarUserSetupX64.exe" role="button" class="btn btn-success">
-				<i class="bi bi-filetype-exe"></i> Installer (64-bit, .exe)
+				<i class="bi bi-filetype-exe" /> <span>Installer (64-bit, .exe)</span>
 			</a>
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableX64.zip" role="button" class="btn btn-success">
-				<i class="bi bi-archive"></i> Portable (64-bit, .zip)
+				<i class="bi bi-archive" /> <span>Portable (64-bit, .zip)</span>
 			</a>
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableX64.tar.gz" role="button" class="btn btn-success">
-				<i class="bi bi-archive"></i> Portable (64-bit, .tar.gz)
+				<i class="bi bi-archive" /> <span>Portable (64-bit, .tar.gz)</span>
 			</a>
 		</div>
 		<h5>SHA-256 Checksums:</h5>
@@ -59,13 +59,13 @@ export default {
 		</ul>
 		<div class="d-flex gap-1 mb-1">
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarUserSetupX86.exe" role="button" class="btn btn-outline-success">
-				<i class="bi bi-filetype-exe"></i> Installer (32-bit, .exe)
+				<i class="bi bi-filetype-exe" /> <span>Installer (32-bit, .exe)</span>
 			</a>
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableX86.zip" role="button" class="btn btn-outline-success">
-				<i class="bi bi-archive"></i> Portable (32-bit, .zip)
+				<i class="bi bi-archive" /> <span>Portable (32-bit, .zip)</span>
 			</a>
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableX86.tar.gz" role="button" class="btn btn-outline-success">
-				<i class="bi bi-archive"></i> Portable (32-bit, .tar.gz)
+				<i class="bi bi-archive" /> <span>Portable (32-bit, .tar.gz)</span>
 			</a>
 		</div>
 		<h5>SHA-256 Checksums:</h5>
@@ -74,7 +74,7 @@ export default {
 			<li>Executable: <code v-if="checksum.length != 0">{{ checksum[0].win32.bin }}</code><code class="placeholder-wave" v-else><span class="placeholder col-5"></span></code></li>
 		</ul>
 		<hr />
-		<h2 id="linux"><i class="bi bi-tux"></i> Linux</h2>
+		<h2 id="linux"><i class="bi bi-tux" /> Linux</h2>
 		<p>Linux versions are currently only available in 64-bit, and are distributed as portable installations as I don't wanna bother making an AppImage for it yet.</p>
 		<p>This was tested only on <strong>Arch Linux</strong>.</p>
 		<div class="alert alert-warning d-flex gap-2" role="alert">
@@ -83,25 +83,28 @@ export default {
 		</div>
 		<div class="d-flex gap-1 mb-1">
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGame-linux.tar.gz" role="button" class="btn btn-success">
-				<i class="bi bi-archive"></i> Portable (64-bit, .tar.gz)
+				<i class="bi bi-archive" /> <span>Portable (64-bit, .tar.gz)</span>
+			</a>
+			<a href="" role="button" class="btn btn-outline-success disabled" title="This distribution channel is coming soon.">
+				<i class="bi bi-file-earmark-binary" /> <span>AppImage (coming soon)</span>
 			</a>
 		</div>
 		<p class="text-start">SHA-256 Checksum: <code v-if="checksum.length != 0">{{ checksum[0].linux.bin }}</code><code class="placeholder-wave" v-else><span class="placeholder col-5"></span></code></p>
 		<hr />
-		<h2 id="macos"><i class="bi bi-apple"></i> macOS</h2>
+		<h2 id="macos"><i class="bi bi-apple" /> macOS</h2>
 		<p class="text-start">No. Not happening. <em>(just use wine/proton or something lmfao)</em></p>
 		<hr />
-		<h2 id="sourcecode"><i class="bi bi-code-slash"></i> Source Code</h2>
+		<h2 id="sourcecode"><i class="bi bi-code-slash" /> Source Code</h2>
 		<p>Want the source code for this game? Including every single asset and janky code?</p>
 		<div class="d-flex gap-1 mb-1">
 			<a href="https://github.com/LohinSys/LelTarGame/archive/refs/tags/v0.2.12.1.zip" role="button" class="btn btn-secondary">
-				<i class="bi bi-archive"></i> .zip
+				<i class="bi bi-archive" /> <span>.zip</span>
 			</a>
 			<a href="https://github.com/LohinSys/LelTarGame/archive/refs/tags/v0.2.12.1.tar.gz" role="button" class="btn btn-secondary">
-				<i class="bi bi-archive"></i> .tar.gz
+				<i class="bi bi-archive" /> <span>.tar.gz</span>
 			</a>
 			<a role="button" class="btn btn-outline-secondary" href="https://github.com/LohinSys/LelTarGame" target="_blank">
-				<i class="bi bi-github"></i> GitHub Repository
+				<i class="bi bi-github" /> <span>GitHub Repository</span>
 			</a>
 		</div>
 	</div>

@@ -31,10 +31,19 @@ async function submit() {
 				}),
 			}).then((responses) => {
 				responseNum.value = responses.status;
-				dat.value = responses.json();
 				return responses.json();
 			});
-			console.debug(response);
+			if (responseNum.value === 200) {
+				console.info("Registered successfully!")
+				dat.value = response
+				localStorage.setItem("user_token",dat.value.token);
+				localStorage.setItem("user_data",`{
+					"username": "${form.value.username}",
+					"password": "${form.value.password}",
+					"id": ${dat.value.id},
+					"role": "${dat.value.role}"
+				}`.replaceAll("	","").replaceAll(" ","").replaceAll("\n",""));	// the replaceAlls are only for minifying the json as much as possible
+			}
 		}
 		catch (e) {
 			error.value = e?.response?.data?.message || "Registration failed. Please try again later."
@@ -64,7 +73,7 @@ defineProps({
 
 <template>
 	<div class="container-xxl" v-if="!loggedIn">
-		<h1 class="text-center mb-3">Create an account</h1>
+		<h1 class="text-center mb-3 d-block">Create an account</h1>
 		<form class="mb-2 needs-validation" id="registration" method="post" @submit.prevent="submit" novalidate>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />

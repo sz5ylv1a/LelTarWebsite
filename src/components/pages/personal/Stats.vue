@@ -1,11 +1,11 @@
 <script setup lang="js">
-defineProps({
+const props = defineProps({
 	loggedIn: Boolean
 })
 </script>
 
 <template>
-	<div class="container-xxl" v-if="loggedIn">
+	<div class="container-xxl" v-if="props.loggedIn">
 		<h1><i class="bi bi-graph-up" /><span>Statistics</span></h1>
 		<p>Nothing to see here yet...</p>
 	</div>

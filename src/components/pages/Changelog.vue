@@ -31,7 +31,7 @@ export default {
 		<details id="game-0.3.0">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-controller"></i>
+					<i class="bi bi-controller" />
 					<span>Game - v0.3.0</span>
 					<span class="badge rounded-pill text-bg-secondary">Not released</span>
 				</div>
@@ -58,7 +58,7 @@ export default {
 		<details id="api-2.0">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-database"></i>
+					<i class="bi bi-database" />
 					<span>API - v2.0</span>
 					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
@@ -73,7 +73,7 @@ export default {
 		<details id="game-0.2.13">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-controller"></i>
+					<i class="bi bi-controller" />
 					<span>Game - v0.2.13</span>
 					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
@@ -92,7 +92,7 @@ export default {
 		<details id="api-1.0">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-database"></i>
+					<i class="bi bi-database" />
 					<span>API - v1.0</span>
 					<span class="badge rounded-pill text-bg-warning">Deprecated</span>
 				</div>
@@ -104,7 +104,7 @@ export default {
 		<details id="game-0.2.12.1">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-controller"></i>
+					<i class="bi bi-controller" />
 					<span>Game - v0.2.12.1</span>
 				</div>
 			</summary>
@@ -117,7 +117,7 @@ export default {
 		<details id="game-0.2.12">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-controller"></i>
+					<i class="bi bi-controller" />
 					<span>Game - v0.2.12</span>
 				</div>
 			</summary>
@@ -130,7 +130,7 @@ export default {
 		<details id="game-0.0.2.8">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-controller"></i>
+					<i class="bi bi-controller" />
 					<span>Game - v0.0.2.8</span>
 				</div>
 			</summary>
@@ -148,7 +148,7 @@ export default {
 		<details id="game-0.0.2.7">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-controller"></i>
+					<i class="bi bi-controller" />
 					<span>Game - v0.0.2.7</span>
 				</div>
 			</summary>
@@ -161,7 +161,7 @@ export default {
 		<details id="game-0.0.2.2">
 			<summary class="h2">
 				<div>
-					<i class="bi bi-controller"></i>
+					<i class="bi bi-controller" />
 					<span>Game - v0.0.2.2</span>
 				</div>
 			</summary>

@@ -4,20 +4,21 @@ import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
 let isLoggedIn = ref(false)
-let user = ref("null")
-let username = ref("")
-let userId = ref(0)
+let user = ref(JSON.parse(localStorage.getItem("user_data")))
+let username = ref(user.value.username || "")
+let userId = ref(user.value.id || 0)
 
 async function refreshStoredLoginInfo() {
 	try {
 		if (localStorage.getItem("user_data") != null) {
-			user.value = JSON.parse(localStorage.getItem("user_data") || "null");
+			user.value = JSON.parse(localStorage.getItem("user_data"));
 			isLoggedIn.value = true;
 		}
 		else {
 			user.value = "null"
 			isLoggedIn.value = false;
 		}
+
 		if (user.value === "null") {
 			username.value = ""
 		}
@@ -35,10 +36,16 @@ refreshStoredLoginInfo()
 </script>
 
 <template>
-	<navbar current-page="Home" :logged-in="isLoggedIn.value" :user="username.value" />
+	<navbar
+		current-page="Home"
+		.logged-in.camel="isLoggedIn.value"
+		@update:logged-in="$event => (isLoggedIn.value = $event)"
+		.user="username.value"
+		@update:user="$event => (username.value = $event)"
+	/>
 	<div class="page-shit">
 		<div class="content mb-5">
-			<router-view :logged-in="isLoggedIn.value" :user="username.value" />
+			<router-view .logged-in.camel="isLoggedIn.value" .user="username.value" />
 		</div>
 		<page-footer entity-name="LohinSys" :f-year="2024" :l-year="2026" />
 	</div>
