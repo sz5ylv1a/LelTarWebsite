@@ -43,6 +43,8 @@ async function submit() {
 					"id": ${dat.value.id},
 					"role": "${dat.value.role}"
 				}`.replaceAll("	","").replaceAll(" ","").replaceAll("\n",""));	// the replaceAlls are only for minifying the json as much as possible
+
+				window.location.href = `/${import.meta.env.VITE_BASE_ROUTE}/`;
 			}
 		}
 		catch (e) {
@@ -56,11 +58,11 @@ async function submit() {
 	}
 	else {
 		if (form.value.password === form.value.passwordConfirm) {
-			error.value = e?.response?.data?.message || "Inputted passwords do not match!"
+			error.value = "The passwords do not match!"
 			console.error(error.value)
 		}
 		else if (!form.value.captcha) {
-			error.value = e?.response?.data?.message || "Please fill in the captcha!"
+			error.value = "Please fill in the captcha!"
 			console.error(error.value)
 		}
 	}
@@ -75,6 +77,10 @@ defineProps({
 	<div class="container-xxl" v-if="!loggedIn">
 		<h1 class="text-center mb-3 d-block">Create an account</h1>
 		<form class="mb-2 needs-validation" id="registration" method="post" @submit.prevent="submit" novalidate>
+			<div class="alert alert-danger d-flex gap-2" v-if="error != null">
+				<div>❌</div>
+				<div>{{ error }}</div>
+			</div>
 			<div class="form-floating mb-3">
 				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />
 				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>

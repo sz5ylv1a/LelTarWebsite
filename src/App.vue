@@ -3,10 +3,10 @@ import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
-let isLoggedIn = ref(false)
-let user = ref(JSON.parse(localStorage.getItem("user_data")))
-let username = ref(user.value.username || "")
-let userId = ref(user.value.id || 0)
+const isLoggedIn = ref(false)
+const user = ref(JSON.parse(localStorage.getItem("user_data")))
+const username = ref(user.value.username || "")
+const userId = ref(user.value.id || 0)
 
 async function refreshStoredLoginInfo() {
 	try {
