@@ -147,12 +147,14 @@ function newDate(d) {return new Date(d)}
 					<tr v-if="toRaw(leaderboardEntries.flat()).length != 0" v-for="(l, i) in toRaw(leaderboardEntries.flat()).sort((a,b) => b.score - a.score)" :key="l.id">
 						<th scope="row">{{ numberWithCommas(i+1) }}</th>
 						<td>
-							{{ toRaw(users.flat()).find(u => u.id === l.usernameID).username }}<span class="text-secondary my-auto align-items-center ms-2" :title="toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name" style="cursor:default;">{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).flag }}</span>
+							{{ toRaw(users.flat())[l.usernameID-1].username }}<span class="text-secondary my-auto align-items-center ms-2" :title="toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name" style="cursor:default;">{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).flag }}</span>
 						</td>
 						<td>{{ numberWithCommas(l.score) }}</td>
-						<td>{{ toRaw(difficulties.flat()).find(d => d.id === l.difficultyID).difficultyName }}</td>
+						<td>{{ toRaw(difficulties.flat())[l.difficultyID-1].difficultyName }}</td>
 						<td>
-							{{ toRaw(monthsNames.flat()).find(m => m.id === newDate(l.achievedAt).getMonth()+1).name }} {{ ordinalSuffix(newDate(l.achievedAt).getDate()) }}, {{ newDate(l.achievedAt).getFullYear() }} @
+							{{ toRaw(monthsNames.flat())[newDate(l.achievedAt).getMonth()].name }}
+							{{ ordinalSuffix(newDate(l.achievedAt).getDate()) }},
+							{{ newDate(l.achievedAt).getFullYear() }} @
 							{{ newDate(l.achievedAt).getHours() }}:{{ ('0'+newDate(l.achievedAt).getMinutes()).slice(-2) }}:{{ ('0'+newDate(l.achievedAt).getSeconds()).slice(-2) }}
 						</td>
 					</tr>
