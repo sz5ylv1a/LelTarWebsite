@@ -1,7 +1,9 @@
 <script setup lang="js">
 const props = defineProps({
-	loggedIn: Boolean
+	loggedIn: Boolean,
+	userId: Boolean
 })
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 </script>
 
 <template>
@@ -10,16 +12,16 @@ const props = defineProps({
 		<p>Nothing to see here yet...</p>
 	</div>
 	<div class="container-xxl text-center" v-else>
-		<h1>You are not logged in!</h1>
+		<h1 class="d-block">You are not logged in!</h1>
 		<p class="text-center">Please log in or register first to view this page!</p>
 		<div class="mb-4">
-			<a class="btn btn-lg btn-outline-secondary" role="button" href="/login">Login</a>
-			<a class="btn btn-lg btn-outline-success ms-2" role="button" href="/register">Register</a>
+			<router-link class="btn btn-lg btn-outline-secondary" role="button" :href="base+'login'">Login</router-link>
+			<router-link class="btn btn-lg btn-outline-success ms-2" role="button" :href="base+'register'">Register</router-link>
 		</div>
 		<a href="javascript:history.back()" class="text-secondary fst-italic" role="button">...or just go back</a>
 	</div>
 </template>
 
-<script scoped>
+<style scoped>
 
-</script>
+</style>

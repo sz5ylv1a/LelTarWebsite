@@ -11,11 +11,8 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 async function logoff() {
 	localStorage.removeItem("user_token");
 	localStorage.removeItem("user_data");
-	window.location.href = `https://szb3nc3.github.io${base}`;
+	window.location.href = base;
 }
-
-console.log(props.loggedIn)
-console.log(props.user)
 </script>
 
 <template>
@@ -52,8 +49,7 @@ console.log(props.user)
 						<button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="border:none;"><span class="account-circle"><i class="bi bi-person-circle" /></span><span class="ps-2">{{ props.user }}</span></button>
 						<ul class="dropdown-menu dropdown-menu-end">
 							<li><router-link class="dropdown-item" :to="base+'profile'"><i class="bi bi-person-fill" /> Profile</router-link></li>
-							<li><router-link class="dropdown-item" :to="base+'stats'"><i class="bi bi-graph-up" /> Statistics</router-link></li>
-							<li><hr class="dropdown-divider" /></li>
+							<li><router-link class="dropdown-item disabled" :to="base+'stats'"><i class="bi bi-graph-up" /> Statistics</router-link></li>
 							<li><router-link class="dropdown-item" :to="base+'settings'"><i class="bi bi-sliders2" /> Settings</router-link></li>
 							<li><hr class="dropdown-divider" /></li>
 							<li><button class="dropdown-item" id="logout-btn" @click="logoff()"><i class="bi bi-box-arrow-left" /> Log out</button></li>
