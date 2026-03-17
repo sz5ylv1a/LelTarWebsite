@@ -7,11 +7,11 @@ const form = ref({
 	password: '',
 	passwordConfirm: '',
 	captcha: false
-});
-const loading = ref(false);
-const error = ref(null);
-const dat = ref();
-const responseNum = ref(0);
+}),
+loading = ref(false),
+error = ref(null),
+dat = ref(),
+responseNum = ref(0);
 
 async function submit() {
 	if (form.value.password === form.value.passwordConfirm && !!form.value.captcha) {
@@ -29,9 +29,9 @@ async function submit() {
 					'email': form.value.email,
 					'password': form.value.password,
 				}),
-			}).then((responses) => {
-				responseNum.value = responses.status;
-				return responses.json();
+			}).then((r) => {
+				responseNum.value = r.status;
+				return r.json();
 			});
 			if (responseNum.value === 200) {
 				console.info("Registered successfully!")
@@ -68,9 +68,7 @@ async function submit() {
 	}
 }
 
-defineProps({
-	loggedIn: Boolean
-})
+defineProps({loggedIn: Boolean})
 </script>
 
 <template>
@@ -112,7 +110,7 @@ defineProps({
 		<p class="no-account">Already have an account? <a href="/login">Log in!</a></p>
 	</div>
 	<div class="container-xxl text-center" v-else>
-		<h1>You've already logged in!</h1>
+		<h1 class="d-block">You've already logged in!</h1>
 		<p class="text-center">Logged in users cannot register new accounts.<br />You must log out or clear all cookies and data before you do it, or if you believe this is an error.</p>
 		<a href="javascript:history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
 	</div>

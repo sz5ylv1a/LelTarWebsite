@@ -3,10 +3,9 @@ const props = defineProps({
 	currentPage: String,
 	loggedIn: Boolean,
 	user: String
-})
-const emit = defineEmits(['update'])
-
-const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
+}),
+emit = defineEmits(['update']),
+base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 
 async function logoff() {
 	localStorage.removeItem("user_token");

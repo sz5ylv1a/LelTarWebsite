@@ -6,11 +6,11 @@ const form = ref({
 	password: "",
 	captcha: false,
 	stayLoggedIn: false,
-});
-const loading = ref(false);
-const error = ref(null);
-const dat = ref();
-const responseNum = ref(0);
+}),
+loading = ref(false),
+error = ref(null),
+dat = ref(),
+responseNum = ref(0);
 
 async function submit() {
 	if (form.value.captcha) {
@@ -27,9 +27,9 @@ async function submit() {
 					'username': form.value.username,
 					'password': form.value.password,
 				}),
-			}).then((responses) => {
-				responseNum.value = responses.status;
-				return responses.json();
+			}).then((r) => {
+				responseNum.value = r.status;
+				return r.json();
 			});
 			if (responseNum.value === 200) {
 				console.info("Login success!")
@@ -50,13 +50,11 @@ async function submit() {
 			else {
 				error.value = `An error has occured whilst logging in (Error code: ${responseNum.value})`
 			}
-		}
-		catch (e) {
+		} catch (e) {
 			error.value = e?.response?.data?.message || "Invalid username or password.";
 			console.error(error.value);
 			console.error(e);
-		}
-		finally {
+		} finally {
 			loading.value = false
 		}
 	}
@@ -66,9 +64,7 @@ async function submit() {
 	}
 }
 
-defineProps({
-	loggedIn: Boolean,
-});
+defineProps({loggedIn: Boolean});
 </script>
 
 <template>
@@ -104,7 +100,7 @@ defineProps({
 		<p class="no-account">Don't have an account? <a href="/register">Register!</a></p>
 	</div>
 	<div class="container-xxl text-center" v-else>
-		<h1>You've already logged in!</h1>
+		<h1 class="d-block">You've already logged in!</h1>
 		<p class="text-center">Log out or clear all cookies and data if you believe this is an error.</p>
 		<a href="javascript:history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
 	</div>

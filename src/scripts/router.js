@@ -13,9 +13,8 @@ import Profile from "../components/pages/personal/Profile.vue";
 import Stats from "../components/pages/personal/Stats.vue";
 import Settings from "../components/pages/personal/Settings.vue";
 
-const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
-
-const router = createRouter({
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`,
+router = createRouter({
 	history: createWebHistory(),
 	routes: [
 		{ path: `${base}`, name: "Home", component: Home },

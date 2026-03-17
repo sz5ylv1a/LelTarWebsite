@@ -2,8 +2,8 @@
 const props = defineProps({
 	loggedIn: Boolean,
 	userId: Boolean
-})
-const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
+}),
+base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 </script>
 
 <template>
@@ -21,7 +21,3 @@ const base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 		<a href="javascript:history.back()" class="text-secondary fst-italic" role="button">...or just go back</a>
 	</div>
 </template>
-
-<style scoped>
-
-</style>

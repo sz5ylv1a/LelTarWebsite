@@ -28,7 +28,10 @@ export default {
 			try {
 				const response = await fetch(target, {
 					method: 'GET',
-					headers: {'Content-Type': 'application/json'}
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json'
+					}
 				});
 				if (!response.ok) {
 					throw new Error("HTTP Error! Status:",response.status)
@@ -38,8 +41,8 @@ export default {
 				console.debug("Fetched",target);
 				console.debug(toRaw(output).flat());
 			}
-			catch (error) {
-				console.error(`An error has occured trying to fetch "${targetUrl}":\n`,error);
+			catch (e) {
+				console.error(`An error has occured trying to fetch "${target}":\n`,e);
 			}
 		}
 		
@@ -71,21 +74,20 @@ function updateSorting(x) {
 }
 
 function ordinalSuffix(i) {
-	let j = i % 10,
-	k = i % 100;
+	let j = i % 10, k = i % 100;
 	if (j === 1 && k !== 11) {
-		return i + "st";
+		return `${i}st`;
 	}
 	if (j === 2 && k !== 12) {
-		return i + "nd";
+		return `${i}nd`;
 	}
 	if (j === 3 && k !== 13) {
-		return i + "rd";
+		return `${i}rd`;
 	}
-	return i + "th";
+	return `${i}th`;
 }
 
-function newDate(z) {return new Date(z)}
+function newDate(d) {return new Date(d)}
 </script>
 
 <template>
@@ -145,7 +147,7 @@ function newDate(z) {return new Date(z)}
 					<tr v-if="toRaw(leaderboardEntries.flat()).length != 0" v-for="(l, i) in toRaw(leaderboardEntries.flat()).sort((a,b) => b.score - a.score)" :key="l.id">
 						<th scope="row">{{ numberWithCommas(i+1) }}</th>
 						<td>
-							{{ toRaw(users.flat()).find(u => u.id === l.usernameID).username }}<span class="text-secondary my-auto align-items-center ms-2" v-bind:title="toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name" style="cursor:default;">{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).flag }}</span>
+							{{ toRaw(users.flat()).find(u => u.id === l.usernameID).username }}<span class="text-secondary my-auto align-items-center ms-2" :title="toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).name" style="cursor:default;">{{ toRaw(countries.flat()).find(c => c.id === toRaw(users.flat()).find(u => u.id === l.usernameID).countryID).flag }}</span>
 						</td>
 						<td>{{ numberWithCommas(l.score) }}</td>
 						<td>{{ toRaw(difficulties.flat()).find(d => d.id === l.difficultyID).difficultyName }}</td>

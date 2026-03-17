@@ -3,10 +3,11 @@ import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
-const isLoggedIn = ref(false)
-const user = ref(JSON.parse(localStorage.getItem("user_data")) || {})
-const username = ref(user.value.username || "")
-const userId = ref(user.value.id || 0)
+const
+isLoggedIn = ref(false),
+user = ref(JSON.parse(localStorage.getItem("user_data")) || {}),
+username = ref(user.value.username || ""),
+userId = ref(user.value.id || 0);
 
 async function refreshStoredLoginInfo() {
 	try {
@@ -44,19 +45,3 @@ refreshStoredLoginInfo()
 		<page-footer entity-name="LohinSys" :f-year="2024" :l-year="2026" />
 	</div>
 </template>
-
-<style>
-.navbar {
-	box-shadow: 0 0 10px #000;
-}
-h1 {
-	margin-top: 20px;
-	display: flex;
-	gap: 14px;
-}
-.page-shit {
-	display: flex;
-	flex-direction: column;
-	min-height: calc(100vh - 60px);
-}
-</style>

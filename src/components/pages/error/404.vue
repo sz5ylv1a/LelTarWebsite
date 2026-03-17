@@ -5,9 +5,8 @@ let randomTaglines = [
 	"You shouldn't be here.",
 	`<span class="h3">L</span>`,
 	"haha xd"
-];
-
-let selectedTagline = randomTaglines[Math.floor(Math.random() * randomTaglines.length)];
+],
+selectedTagline = randomTaglines[Math.floor(Math.random() * randomTaglines.length)];
 </script>
 
 <template>

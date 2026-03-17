@@ -1,7 +1,3 @@
-<script setup lang="js">
-
-</script>
-
 <template>
 	<div class="container-xxl">
 		<h1><i class="bi bi-info-circle-fill" /><span>About this game</span></h1>

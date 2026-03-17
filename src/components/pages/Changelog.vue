@@ -6,7 +6,7 @@ export default {
 			latestApiVer: "2.0",
 		}
 	},
-	mounted() {
+	async mounted() {
 		try {
 			function openLatest(type,verId) {
 				const latest = document.getElementById(`${type}-${verId}`);
@@ -16,8 +16,8 @@ export default {
 			openLatest("game",this.latestGameVer);
 			openLatest("api",this.latestApiVer)
 		}
-		catch (error) {
-			console.error(error)
+		catch (e) {
+			console.error(e);
 		}
 	}
 }
