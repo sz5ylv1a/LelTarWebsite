@@ -1,7 +1,8 @@
 <script setup lang="js">
 import { ref } from 'vue';
 
-const form = ref({
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`,
+form = ref({
 	username: '',
 	email: '',
 	password: '',
@@ -9,6 +10,7 @@ const form = ref({
 	captcha: false
 }),
 loading = ref(false),
+registerBtnMsg = ref("Register"),
 error = ref(null),
 dat = ref(),
 responseNum = ref(0);
@@ -16,6 +18,7 @@ responseNum = ref(0);
 async function submit() {
 	if (form.value.password === form.value.passwordConfirm && !!form.value.captcha) {
 		loading.value = true
+		registerBtnMsg.value = "Registering..."
 		error.value = null
 		try {
 			const response = await fetch(`${import.meta.env.VITE_API_URL}auth/register`, {
@@ -34,6 +37,7 @@ async function submit() {
 				return r.json();
 			});
 			if (responseNum.value === 200) {
+				registerBtnMsg.value = "Success!"
 				console.info("Registered successfully!")
 				dat.value = response
 				localStorage.setItem("user_token",dat.value.token);
@@ -44,16 +48,17 @@ async function submit() {
 					"role": "${dat.value.role}"
 				}`.replaceAll("	","").replaceAll(" ","").replaceAll("\n",""));	// the replaceAlls are only for minifying the json as much as possible
 
-				window.location.href = `/${import.meta.env.VITE_BASE_ROUTE}/`;
+				window.location.href = base;
 			}
 		}
 		catch (e) {
+			registerBtnMsg.value = "Register"
 			error.value = e?.response?.data?.message || "Registration failed. Please try again later."
 			console.error(error.value)
 			console.error(e)
 		}
 		finally {
-			loading.value = false
+			if (responseNum.value !== 200) {loading.value = false}
 		}
 	}
 	else {
@@ -80,34 +85,34 @@ defineProps({loggedIn: Boolean})
 				<div>{{ error }}</div>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />
-				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" :disabled="loading" />
+				<label for="username" class="form-label"><i class="bi bi-person-fill" /> Username</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required v-model="form.email" />
-				<label for="email" class="form-label"><i class="bi bi-at"></i> E-mail</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required v-model="form.email" :disabled="loading" />
+				<label for="email" class="form-label"><i class="bi bi-at" /> E-mail</label>
 			</div>
 			<div class="form-floating mb-3">
 				<input type="password" class="form-control" id="password" name="password" placeholder="Password"
-				required v-model="form.password" />
-				<label for="password" class="form-label"><i class="bi bi-lock-fill"></i> Password</label>
+				required v-model="form.password" :disabled="loading" />
+				<label for="password" class="form-label"><i class="bi bi-lock-fill" /> Password</label>
 			</div>
 			<div class="form-floating mb-3">
 				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
-				placeholder="Confirm Password" required v-model="form.passwordConfirm" />
-				<label for="passwordConfirm" class="form-label"><i class="bi bi-key-fill"></i> Confirm Password</label>
+				placeholder="Confirm Password" required v-model="form.passwordConfirm" :disabled="loading" />
+				<label for="passwordConfirm" class="form-label"><i class="bi bi-key-fill" /> Confirm Password</label>
 			</div>
 			<div class="p-4 bg-body-tertiary mb-3">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="form.captcha" />
+					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="form.captcha" :disabled="loading" />
 					<label class="form-check-label ps-3" for="captcha">I'm not a robot</label>
 				</div>
 			</div>
 			<div class="text-center">
-				<input class="btn btn-success btn-lg" type="submit" value="Register">
+				<input class="btn btn-success btn-lg" type="submit" value="Register" :disabled="loading">
 			</div>
 		</form>
-		<p class="no-account">Already have an account? <a href="/login">Log in!</a></p>
+		<p class="no-account">Already have an account? <router-link :to="base+'login'">Log in!</router-link></p>
 	</div>
 	<div class="container-xxl text-center" v-else>
 		<h1 class="d-block">You've already logged in!</h1>

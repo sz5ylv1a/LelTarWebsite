@@ -1,13 +1,15 @@
 <script setup lang="js">
 import { ref } from "vue";
 
-const form = ref({
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`,
+form = ref({
 	username: "",
 	password: "",
 	captcha: false,
 	stayLoggedIn: false
 }),
 loading = ref(false),
+loginBtnMsg = ref("Login"),
 error = ref(null),
 dat = ref(),
 responseNum = ref(0);
@@ -15,6 +17,7 @@ responseNum = ref(0);
 async function submit() {
 	if (form.value.captcha) {
 		loading.value = true;
+		loginBtnMsg.value = "Logging in..."
 		error.value = null;
 		try {
 			const response = await fetch(`${import.meta.env.VITE_API_URL}auth/login`, {
@@ -32,6 +35,7 @@ async function submit() {
 				return r.json();
 			});
 			if (responseNum.value === 200) {
+				loginBtnMsg.value = "Success!"
 				console.info("Login success!")
 				dat.value = response
 				localStorage.setItem("user_token",dat.value.token);
@@ -42,20 +46,23 @@ async function submit() {
 					"role": "${dat.value.role}"
 				}`.replaceAll("	","").replaceAll(" ","").replaceAll("\n",""));	// the replaceAlls are only for minifying the json as much as possible
 
-				window.location.href = `/${import.meta.env.VITE_BASE_ROUTE}/`;
+				window.location.href = base;
 			}
 			else if (responseNum.value === 401) {
+				loginBtnMsg.value = "Login"
 				error.value = `Invalid username or password. (Error code: ${responseNum.value})`
 			}
 			else {
-				error.value = `An error has occured whilst logging in (Error code: ${responseNum.value})`
+				loginBtnMsg.value = "Login"
+				error.value = `An error has occured whilst logging in! (Error code: ${responseNum.value})`
 			}
 		} catch (e) {
 			error.value = e?.response?.data?.message || "Invalid username or password.";
+			loginBtnMsg.value = "Login"
 			console.error(error.value);
 			console.error(e);
 		} finally {
-			loading.value = false
+			if (responseNum.value !== 200) loading.value = false
 		}
 	}
 	else {
@@ -76,16 +83,16 @@ defineProps({loggedIn: Boolean});
 				<div>{{ error }}</div>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" />
-				<label for="username" class="form-label"><i class="bi bi-person-fill"></i> Username</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" :disabled="loading" />
+				<label for="username" class="form-label"><i class="bi bi-person-fill" /> Username</label>
 			</div>
 			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="password" name="password" placeholder="Password" required v-model="form.password" />
-				<label for="password" class="form-label"><i class="bi bi-lock-fill"></i> Password</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password" required v-model="form.password" :disabled="loading" />
+				<label for="password" class="form-label"><i class="bi bi-lock-fill" /> Password</label>
 			</div>
 			<div class="p-4 bg-body-tertiary mb-3">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="form.captcha" />
+					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="form.captcha" :disabled="loading" />
 					<label class="form-check-label ps-3" for="captcha">I'm not a robot</label>
 				</div>
 			</div>
@@ -94,10 +101,10 @@ defineProps({loggedIn: Boolean});
 				<label class="form-check-label" for="stayLoggedIn"><i>Stay logged in</i></label>
 			</div> -->
 			<div class="text-center">
-				<input class="btn btn-success btn-lg" type="submit" value="Login" accesskey="enter" :disabled="loading.value">
+				<input class="btn btn-success btn-lg" type="submit" :value="loginBtnMsg" accesskey="enter" :disabled="loading">
 			</div>
 		</form>
-		<p class="no-account">Don't have an account? <a href="/register">Register!</a></p>
+		<p class="no-account">Don't have an account? <router-link :to="base+'register'">Register!</router-link></p>
 	</div>
 	<div class="container-xxl text-center" v-else>
 		<h1 class="d-block">You've already logged in!</h1>
