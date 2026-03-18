@@ -1,7 +1,8 @@
 <script setup lang="js">
 const props = defineProps({
 	loggedIn: Boolean,
-	userId: Boolean
+	user: String,
+	userId: Number
 }),
 base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 </script>

@@ -1,9 +1,154 @@
 <script setup lang="js">
+import { ref } from 'vue';
+
 const props = defineProps({
 	loggedIn: Boolean,
+	user: String,
 	userId: Number
 }),
-base = `/${import.meta.env.VITE_BASE_ROUTE}/`
+base = `/${import.meta.env.VITE_BASE_ROUTE}/`,
+apiUrl = `${import.meta.env.VITE_API_URL}accMgmt/${userId}`,
+reqHeaders = {
+	'Accept': 'application/json',
+	'Content-Type': 'application/json'
+},
+
+formCountry = ref({
+	new: 0
+}),
+formUsername = ref({
+	old: "",
+	new: ""
+}),
+formEmail = ref({
+	old: "",
+	new: "",
+	confirm: ""
+}),
+formPassword = ref({
+	old: "",
+	new: "",
+	confirm: ""
+}),
+
+loading = ref(false),
+error = ref(null),
+dat = ref(),
+responseNum = ref(0);
+
+async function changeCountry() {
+	loading.value = true
+	error.value = null
+	try {
+		const response = await fetch(`${apiUrl}/updateCountry`, {
+			method: 'PUT',
+			headers: reqHeaders,
+			body: formCountry.value.new,
+		}).then((r) => {
+			responseNum.value = r.status;
+			return r.json();
+		});
+	} catch (e) {
+		console.error(e);
+	} finally {
+		loading.value = false
+	}
+}
+async function changeUsername() {
+	loading.value = true
+	error.value = null
+	try {
+		const response = await fetch(`${apiUrl}/updateUsername`, {
+			method: 'PUT',
+			headers: reqHeaders,
+			body: formUsername.value.new,
+		}).then((r) => {
+			responseNum.value = r.status;
+			return r.json();
+		});
+	} catch (e) {
+		console.error(e);
+	} finally {
+		loading.value = false
+	}
+}
+async function changePassword() {
+	if (formPassword.value.new === formPassword.value.confirm) {
+		loading.value = true
+		error.value = null
+		try {
+			const response = await fetch(`${apiUrl}/updatePassword`, {
+				method: 'PUT',
+				headers: reqHeaders,
+				body: formPassword.value.new,
+			}).then((r) => {
+				responseNum.value = r.status;
+				return r.json();
+			});
+		} catch (e) {
+			console.error(e);
+		} finally {
+			loading.value = false
+		}
+	}
+	else {
+		error.value = "The passwords do not match!"
+		return console.error("Confirmation failed:", error.value);
+	}
+}
+async function changeEmail() {
+	if (formEmail.value.new === formEmail.value.confirm) {
+		loading.value = true
+		error.value = null
+		try {
+			const response = await fetch(`${apiUrl}/updateEmail`, {
+				method: 'PUT',
+				headers: reqHeaders,
+				body: formEmail.value.new,
+			}).then((r) => {
+				responseNum.value = r.status;
+				return r.json();
+			});
+		} catch (e) {
+			error.value = e?.response?.data?.message || "Could not change e-mail address."
+			console.error(error.value);
+			console.error(e);
+		} finally {
+			loading.value = false
+		}
+	}
+	else {
+		error.value = "Confirmation failed: The e-mail addresses do not match!";
+		return console.error("Confirmation failed:", error.value);
+	}
+}
+
+async function deleteAccount() {
+	const confirmed = confirm("Are you sure you wanna delete your account?\nThis action CANNOT be undone!");
+	if (confirmed) {
+		loading.value = true
+		error.value = null
+		try {
+			const response = await fetch(`${apiUrl}/deleteAccount`, {
+				method: 'DELETE',
+				headers: reqHeaders
+			}).then((r) => {
+				responseNum.value = r.status;
+				return r.json();
+			});
+		} catch (e) {
+			error.value = "An error has occured whilst trying to delete the account."
+			console.error(error.value);
+			console.error(e);
+		} finally {
+			loading.value = false
+		}
+	}
+	else {
+		error.value = "Operation cancelled."
+		return console.info(error.value);
+	}
+}
 </script>
 
 <template>
@@ -60,7 +205,7 @@ base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 				<div class="col-lg-3 px-lg-0">
 					<input id="newEmail" class="form-control" type="email" />
 				</div>
-			</div>	
+			</div>
 			<div class="row mb-3">
 				<label for="confirmNewEmail" class="col-auto col-form-label">Confirm New E-mail</label>
 				<div class="col-lg-3 px-lg-0">
@@ -86,7 +231,7 @@ base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 				<div class="col-lg-3 px-lg-0">
 					<input id="newPassword" class="form-control" type="password" />
 				</div>
-			</div>	
+			</div>
 			<div class="row mb-3">
 				<label for="confirmNewPassword" class="col-auto col-form-label">Confirm New Password</label>
 				<div class="col-lg-3 px-lg-0">
@@ -108,8 +253,9 @@ base = `/${import.meta.env.VITE_BASE_ROUTE}/`
 		<h1 class="d-block">You are not logged in!</h1>
 		<p class="text-center">Please log in or register first to view this page!</p>
 		<div class="mb-4">
-			<router-link class="btn btn-lg btn-outline-secondary" role="button" :href="base+'login'">Login</router-link>
-			<router-link class="btn btn-lg btn-outline-success ms-2" role="button" :href="base+'register'">Register</router-link>
+			<router-link class="btn btn-lg btn-outline-secondary" role="button" :href="base + 'login'">Login</router-link>
+			<router-link class="btn btn-lg btn-outline-success ms-2" role="button"
+				:href="base + 'register'">Register</router-link>
 		</div>
 		<a href="javascript:history.back()" class="text-secondary fst-italic" role="button">...or just go back</a>
 	</div>

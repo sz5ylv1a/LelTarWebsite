@@ -3,8 +3,7 @@ import { ref } from 'vue';
 import Navbar from './components/Navbar.vue';
 import PageFooter from './components/PageFooter.vue';
 
-const
-isLoggedIn = ref(false),
+const isLoggedIn = ref(false),
 user = ref(JSON.parse(localStorage.getItem("user_data")) || {}),
 username = ref(user.value.username || ""),
 userId = ref(user.value.id || 0);

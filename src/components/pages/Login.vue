@@ -5,7 +5,7 @@ const form = ref({
 	username: "",
 	password: "",
 	captcha: false,
-	stayLoggedIn: false,
+	stayLoggedIn: false
 }),
 loading = ref(false),
 error = ref(null),

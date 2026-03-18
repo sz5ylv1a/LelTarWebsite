@@ -58,6 +58,7 @@ function ordinalSuffix(i) {
 function newDate(d) { return new Date(d) }
 
 try {
+	doneFetching.value = false;
 	fetchFromApi(monthsJson, monthsNames.value);
 	fetchFromApi(`${apiUrl}dummy/countries`, countries.value);
 	fetchFromApi(`${apiUrl}accMgmt/view/${props.userId}`, profile.value);
