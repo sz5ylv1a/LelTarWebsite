@@ -7,7 +7,7 @@ const props = defineProps({
 	userId: Number
 }),
 base = `/${import.meta.env.VITE_BASE_ROUTE}/`,
-apiUrl = `${import.meta.env.VITE_API_URL}accMgmt/${userId}`,
+apiUrl = `${import.meta.env.VITE_API_URL}accMgmt/${props.userId}`,
 reqHeaders = {
 	'Accept': 'application/json',
 	'Content-Type': 'application/json'
