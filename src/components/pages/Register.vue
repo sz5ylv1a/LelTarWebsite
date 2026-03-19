@@ -12,6 +12,7 @@ form = ref({
 loading = ref(false),
 registerBtnMsg = ref("Register"),
 error = ref(null),
+dat = ref(),
 responseNum = ref(0);
 
 async function submit() {
@@ -33,17 +34,18 @@ async function submit() {
 				}),
 			}).then((r) => {
 				responseNum.value = r.status;
-				return [r.ok, r.json()];
+				return r.json();
 			});
-			if (responseNum[0]) {
+			if (responseNum.value === 200) {
+				dat.value = await response
 				registerBtnMsg.value = "Success!"
 				console.info("Registered successfully!")
-				localStorage.setItem("user_token",response[1].token);
+				localStorage.setItem("user_token",dat.value.token);
 				localStorage.setItem("user_data",`{
 					"username": "${form.value.username}",
 					"password": "${form.value.password}",
-					"id": ${response[1].id},
-					"role": "${response[1].role}"
+					"id": ${dat.value.id},
+					"role": "${dat.value.role}"
 				}`.replaceAll("	","").replaceAll(" ","").replaceAll("\n",""));	// the replaceAlls are only for minifying the json as much as possible
 
 				window.location.href = base;
