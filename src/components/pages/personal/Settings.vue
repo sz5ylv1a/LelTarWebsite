@@ -13,6 +13,8 @@ reqHeaders = {
 	'Content-Type': 'application/json'
 },
 
+countries = ref([]),
+
 formCountry = ref({
 	new: 0
 }),
@@ -33,7 +35,6 @@ formPassword = ref({
 
 loading = ref(false),
 error = ref(null),
-dat = ref(),
 responseNum = ref(0);
 
 async function changeCountry() {
@@ -169,7 +170,10 @@ async function deleteAccount() {
 				<label for="updateCountry" class="col-auto col-form-label">Country</label>
 				<div class="col-lg-3 px-lg-0">
 					<select id="updateCountry" class="form-select" v-model="formCountry.new" :disabled="loading">
-						<option value="0">❔ Unknown</option>
+						<option v-if="countries.length != 0" v-for="c in countries" :value="c.id">
+							{{ c.flag }} {{ c.name }}
+						</option>
+						<option v-else value="0">❔ Unknown</option>
 					</select>
 				</div>
 				<div class="col-auto mt-3 mt-lg-0">

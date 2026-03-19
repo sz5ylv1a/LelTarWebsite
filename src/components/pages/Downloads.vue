@@ -1,33 +1,30 @@
-<script lang="js">
+<script setup lang="js">
 import { ref, toRaw } from "vue";
 import checksumsDotJson from "/checksum.json?url";
 
-export default {
-	data() {
-		return {
-			checksum: ref([])
-		}
-	},
-	async mounted() {
-		async function fetchFromReleases(target, output) {
-			try {
-				const response = await fetch(target);
-				if (!response.ok) {
-					throw new Error("HTTP Error! Status:",response.status)
-				}
-				let dat = await response.json();
-				output.push(dat);
-				console.log("Fetched",target);
-				console.log(toRaw(output[0]));
-			}
-			catch (error) {
-				console.error(`An error has occured trying to fetch "${target}":\n`,error);
-			}
-		}
+const checksum = ref([])
 
-		fetchFromReleases(checksumsDotJson, this.checksum);
+async function fetchFromReleases(target, output) {
+	try {
+		const response = await fetch(target, {
+			method: 'GET',
+			headers: {
+				"Accept": "application/json",
+				"Content-Type": "application/json"
+			}
+		}).then((r) => {return [r.ok, r.status, r.json()];});
+		if (response[0]) {
+			output.push(await response[2]);
+			console.debug("Fetched",target);
+			console.debug(toRaw(output)[0]);
+		} else {throw new Error(`HTTP Error! (${response[1]})`);}
+	}
+	catch (e) {
+		console.error(`An error has occured trying to fetch "${target}":\n`,e);
 	}
 }
+
+fetchFromReleases(checksumsDotJson, checksum.value);
 </script>
 
 <template>

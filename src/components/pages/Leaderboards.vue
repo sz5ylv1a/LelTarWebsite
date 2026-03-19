@@ -2,73 +2,67 @@
 import { ref, toRaw } from 'vue';
 import monthsJson from '/months.json?url';
 
+/* --------------------------- */
 // Source - https://stackoverflow.com/a
 // Posted by Elias Zamaria, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-01-28, License - CC BY-SA 4.0
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-</script>
+/* --------------------------- */
 
-<script lang="js">
-export default {
-	data() {
-		return {
-			difficulties: ref([]),
-			countries: ref([]),
-			users: ref([]),
-			leaderboardEntries: ref([]),
-			
-			monthsNames: ref([])
-		}
-	},
-	async mounted() {
-		const apiUrl = import.meta.env.VITE_API_URL
-		async function fetchFromApi(target, output) {
-			try {
-				const response = await fetch(target, {
-					method: 'GET',
-					headers: {
-						'Accept': 'application/json',
-						'Content-Type': 'application/json'
-					}
-				});
-				if (!response.ok) {
-					throw new Error("HTTP Error! Status:",response.status)
-				}
-				let dat = await response.json();
-				output.push(dat)
-				console.debug("Fetched",target);
-				console.debug(toRaw(output).flat());
+const apiUrl = import.meta.env.VITE_API_URL,
+
+difficulties = ref([]),
+countries = ref([]),
+users = ref([]),
+leaderboardEntries = ref([]),
+monthsNames = ref([]),
+
+sortingMode = ref(0)
+
+async function fetchFromApi(target, output) {
+	try {
+		const response = await fetch(target, {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
 			}
-			catch (e) {
-				console.error(`An error has occured trying to fetch "${target}":\n`,e);
-			}
-		}
-		
-		fetchFromApi(monthsJson, this.monthsNames);
-		fetchFromApi(apiUrl+'dummy/difficulties', this.difficulties);
-		fetchFromApi(apiUrl+'dummy/countries', this.countries);
-		fetchFromApi(apiUrl+'accMgmt/view/all', this.users);
-		fetchFromApi(apiUrl+'lbs/all', this.leaderboardEntries);
+		}).then((r) => {return [r.ok, r.status, r.json()];});
+		if (response[0]) {
+			output.push(await response[2]);
+			console.debug("Fetched",target);
+			console.debug(toRaw(output)[0]);
+		} else {throw new Error(`HTTP Error! (${response[1]})`);}
+	}
+	catch (e) {
+		console.error(`An error has occured trying to fetch "${target}":\n`,e);
 	}
 }
 
-let sortingMode = ref(0)
+fetchFromApi(monthsJson, monthsNames.value);
+fetchFromApi(`${apiUrl}dummy/difficulties`, difficulties.value);
+fetchFromApi(`${apiUrl}dummy/countries`, countries.value);
+fetchFromApi(`${apiUrl}accMgmt/view/all`, users.value);
+fetchFromApi(`${apiUrl}lbs/all`, leaderboardEntries.value);
 
 function updateSorting(x) {
-	const opt1 = document.getElementById("ordopt-1");
-	const opt2 = document.getElementById("ordopt-2");
+	const
+	opt1 = document.getElementById("ordopt-1"),
+	opt2 = document.getElementById("ordopt-2");
 	
-	if (sortingMode !== x) {
-		sortingMode = x
+	if (sortingMode.value !== x) {
+		sortingMode.value = x
 		switch (sortingMode) {
 			case 0:	// Score and Difficulty
-			opt1.classList.add("active");
-			opt2.classList.remove("active");
+				opt1.classList.add("active");
+				opt2.classList.remove("active");
+				return;
 			case 1: // Only by Score
-			opt1.classList.remove("active");
-			opt2.classList.add("active");
+				opt1.classList.remove("active");
+				opt2.classList.add("active");
+				return;
 		}
 	}
 }
@@ -87,7 +81,7 @@ function ordinalSuffix(i) {
 	return `${i}th`;
 }
 
-function newDate(d) {return new Date(d)}
+function newDate(d) {return new Date(d);}
 </script>
 
 <template>

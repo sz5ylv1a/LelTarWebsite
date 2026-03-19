@@ -1,34 +1,9 @@
-<script lang="js">
-export default {
-	data() {
-		return {
-			latestGameVer: "0.2.13",
-			latestApiVer: "2.0",
-		}
-	},
-	async mounted() {
-		try {
-			function openLatest(type,verId) {
-				const latest = document.getElementById(`${type}-${verId}`);
-				latest.open = true;
-			}
-
-			openLatest("game",this.latestGameVer);
-			openLatest("api",this.latestApiVer)
-		}
-		catch (e) {
-			console.error(e);
-		}
-	}
-}
-</script>
-
 <template>
 	<div class="container-xxl">
 		<h1><i class="bi bi-clock-history" /><span>Changelog</span></h1>
 		<p>This page contains the changelog of the game and server, documenting every possible version.</p>
 		<hr>
-		<details id="game-0.3.0">
+		<details :open="false" id="game-0.3.0">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
@@ -55,7 +30,7 @@ export default {
 				<li>Fix volume sliders randomly setting themselves to incorrect values</li>
 			</ul>
 		</details>
-		<details id="api-2.0">
+		<details :open="true" id="api-2.0">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-database" />
@@ -70,7 +45,7 @@ export default {
 				<li class="mt-4">oh yeah and v1 is fully read-only now, sorry if you were using that</li>
 			</ul>
 		</details>
-		<details id="game-0.2.13">
+		<details :open="true" id="game-0.2.13">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
@@ -89,7 +64,7 @@ export default {
 				<li>Volume sliders finally work as they should now!</li>
 			</ul>
 		</details>
-		<details id="api-1.0">
+		<details :open="false" id="api-1.0">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-database" />
@@ -101,7 +76,7 @@ export default {
 				<li>Initial release...?</li>
 			</ul>
 		</details>
-		<details id="game-0.2.12.1">
+		<details :open="false" id="game-0.2.12.1">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
@@ -114,7 +89,7 @@ export default {
 				<li>Internal consistency changes, including window titles and folder names being capitalized</li>
 			</ul>
 		</details>
-		<details id="game-0.2.12">
+		<details :open="false" id="game-0.2.12">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
@@ -127,7 +102,7 @@ export default {
 				<li>Couple tweaks and changes that I don't feel like listing down...</li>
 			</ul>
 		</details>
-		<details id="game-0.0.2.8">
+		<details :open="false" id="game-0.0.2.8">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
@@ -145,7 +120,7 @@ export default {
 				</ul>
 			</ul>
 		</details>
-		<details id="game-0.0.2.7">
+		<details :open="false" id="game-0.0.2.7">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
@@ -158,7 +133,7 @@ export default {
 				<li>Lots of small tweaks and changes...</li>
 			</ul>
 		</details>
-		<details id="game-0.0.2.2">
+		<details :open="false" id="game-0.0.2.2">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
@@ -181,3 +156,22 @@ summary div {
 	gap: 8px;
 }
 </style>
+
+<script setup lang="js">
+const
+latestGameVer = "0.2.13",
+latestApiVer = "2.0"
+
+try {
+	function openLatest(type, verId) {
+		const latest = document.getElementById(`${type}-${verId}`);
+		latest.open = true;
+	}
+
+	openLatest("game",latestGameVer);
+	openLatest("api",latestApiVer)
+}
+catch (e) {
+	console.error(e);
+}
+</script>

@@ -6,14 +6,13 @@ const props = defineProps({
 	loggedIn: Boolean,
 	user: String,
 	userId: Number
-}), 
+}),
 base = `/${import.meta.env.VITE_BASE_ROUTE}/`,
 apiUrl = import.meta.env.VITE_API_URL,
 
 profile = ref([]),
 countries = ref([]),
 monthsNames = ref([]),
-responseNum = ref(0),
 doneFetching = ref(false)
 
 if (!props.loggedIn) console.info("You are not logged in!");
@@ -25,17 +24,14 @@ async function fetchFromApi(target, output) {
 			headers: {
 				"Accept": "application/json",
 				"Content-Type": "application/json",
-			},
-		}).then((r) => {
-			responseNum.value = r.status;
-			return r.json();
-		});
-		if (responseNum.value === 200) {
+			}
+		}).then((r) => {return [r.ok, r.status, r.json()];});
+		if (response[0]) {
+			output.push(await response[2]);
+			output = toRaw(output)[0];
 			console.debug("Fetched",target);
-			output.push(response);
-			output = toRaw(output).flat()
 			console.debug(output);
-		}
+		} else {throw new Error(`HTTP Error! (${response[1]})`);}
 	} catch (e) {
 		console.error(`An error has occured trying to fetch "${target}":\n`,e);
 	}
@@ -74,8 +70,7 @@ try {
 		<h1>
 			<i class="bi bi-person-circle" />
 			<span>{{ props.user }}</span>
-			<span v-if="doneFetching" class="text-secondary my-auto align-items-center ms-2" style="cursor:default;"
-				:title="countries.flat().find(c => c.id == profile[0].countryID).name">
+			<span v-if="doneFetching" class="text-secondary my-auto align-items-center ms-2" style="cursor:default;" :title="countries.flat().find(c => c.id == profile[0].countryID).name">
 					{{ countries.flat().find(c => c.id == profile[0].countryID).flag }}
 			</span>
 			<span v-else class="my-auto align-items-center placeholder-glow placeholder placeholder-lg rounded" style="width:48px;" />
@@ -88,7 +83,8 @@ try {
 		<ul>
 			<li>
 				<span style="cursor:default;">ID: </span>
-				<span>{{ props.userId }}</span></li>
+				<span>{{ props.userId }}</span>
+			</li>
 			<li>
 				<span>Member since: </span>
 				<span v-if="!doneFetching" class="placeholder-wave placeholder placeholder-lg rounded" style="width:300px;" />
@@ -106,10 +102,8 @@ try {
 		<h1 class="d-block">You are not logged in!</h1>
 		<p class="text-center">Please log in or register first to view this page!</p>
 		<div class="mb-4">
-			<router-link class="btn btn-lg btn-outline-secondary" role="button"
-				:href="base + 'login'">Login</router-link>
-			<router-link class="btn btn-lg btn-outline-success ms-2" role="button"
-				:href="base + 'register'">Register</router-link>
+			<router-link class="btn btn-lg btn-outline-secondary" role="button" :href="base+'login'">Login</router-link>
+			<router-link class="btn btn-lg btn-outline-success ms-2" role="button" :href="base+'register'">Register</router-link>
 		</div>
 		<a href="javascript:history.back()" class="text-secondary fst-italic" role="button">...or just go back</a>
 	</div>

@@ -27,9 +27,7 @@ async function refreshStoredLoginInfo() {
 			userId.value = user.value.id
 		}
 	}
-	catch (e) {
-		console.error(e);
-	}
+	catch (e) {console.error(e);}
 }
 
 refreshStoredLoginInfo()

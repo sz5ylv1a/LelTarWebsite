@@ -1,8 +1,7 @@
 <script setup lang="js">
-const base = `/${import.meta.env.VITE_BASE_ROUTE}/`;
+const base = `/${import.meta.env.VITE_BASE_ROUTE}/`,
 
 // image alt texts
-const
 upsell_b1 = "Hard Difficulty Demonstration",
 upsell_b2 = "Lunatic Difficulty Demonstration, mainly the real hard part"
 </script>
