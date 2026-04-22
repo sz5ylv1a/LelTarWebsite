@@ -62,7 +62,7 @@
 		<hr />
 		
 		<h2 id="technical-details"><i class="bi bi-tools" /><span>Technical details</span></h2>
-		<p>This game was made using <strong><a href="https://godotengine.org/download/archive/#4.5.1" target="_blank">Godot Engine 4.5.1</a></strong> using the <strong>GDScript</strong> language. It supports native <strong>Vulkan</strong> rendering, with fallbacks for <strong>DirectX 12</strong> and <strong>OpenGL 3</strong> if not supported by the hardware.</p>
+		<p>This game was made using <strong><a href="https://godotengine.org/download/archive/#4.5.2" target="_blank">Godot Engine 4.5.2</a></strong> using the <strong>GDScript</strong> language. It supports native <strong>Vulkan</strong> rendering, with fallbacks for <strong>DirectX 12</strong> and <strong>OpenGL 3</strong> if not supported by the hardware.</p>
 		<p>Compatibility with <strong><a href="https://www.winehq.org/" target="_blank">Wine</a> and <a href="https://en.wikipedia.org/wiki/Proton_(software)" target="_blank">Proton</a></strong> should be quite good if you choose to play the game this way, especially on macOS.</p>
 		<h3 id="system-requirements"><i class="bi bi-pc-display" /><span>System requirements</span></h3>
 		<div class="container-fluid">
