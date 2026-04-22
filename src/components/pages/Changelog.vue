@@ -3,15 +3,15 @@
 		<h1><i class="bi bi-clock-history" /><span>Changelog</span></h1>
 		<p>This page contains the changelog of the game and server, documenting every possible version.</p>
 		<hr>
-		<details :open="false" id="game-0.3.0">
+		<details :open="true" id="game-0.3.0">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.3.0</span>
-					<span class="badge rounded-pill text-bg-secondary">Not released</span>
+					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
 			</summary>
-			<h5>By far the biggest update yet!</h5>
+			<h5>This is by far the biggest update yet! Here's what we've got in store for you...</h5>
 			<ul>
 				<li>Tweaked grazing a little bit</li>
 				<li>Reworked whole internal game logic</li>
@@ -23,6 +23,7 @@
 				<li>A new and much more simpler health system, as well as redesigned health and bomb bars entirely</li>
 				<li>You can now use whatever framerate you want, up to <strong>500+ FPS</strong>! ...as long as V-Sync is disabled, of course</li>
 				<li>Actually implemented online account support instead of using a fake dummy login prompt</li>
+				<li>Update Godot Engine version to 4.5.2</li>
 			</ul>
 			<h6>Bugfixes:</h6>
 			<ul>
@@ -45,12 +46,11 @@
 				<li class="mt-4">oh yeah and v1 is fully read-only now, sorry if you were using that</li>
 			</ul>
 		</details>
-		<details :open="true" id="game-0.2.13">
+		<details :open="false" id="game-0.2.13">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.2.13</span>
-					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
 			</summary>
 			<ul>
@@ -159,7 +159,7 @@ summary div {
 
 <script setup lang="js">
 const
-latestGameVer = "0.2.13",
+latestGameVer = "0.3.0",
 latestApiVer = "2.0"
 
 try {

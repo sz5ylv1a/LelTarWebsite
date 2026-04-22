@@ -73,7 +73,7 @@ fetchFromReleases(checksumsDotJson, checksum.value);
 		<hr />
 		<h2 id="linux"><i class="bi bi-tux" /> Linux</h2>
 		<p>Linux versions are currently only available in 64-bit, and are distributed as portable installations as I don't wanna bother making an AppImage for it yet.</p>
-		<p>This was tested only on <strong>Arch Linux</strong>.</p>
+		<p>This was only tested on <strong>Arch Linux</strong>.</p>
 		<div class="alert alert-warning d-flex gap-2" role="alert">
 			<div>&#x26a0;</div>
 			<div><strong>You might need to use <code>chmod +x</code> to allow the game to start.</strong> This must be applied to both the <code>.x86_64</code> executable and <code>.sh</code> script <em>(if it's a debug build)</em> for it to work.</div>
