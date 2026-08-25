@@ -11,11 +11,12 @@ defineProps({
 		<div class="container-xxl">
 			<div class="d-flex">
 				<div class="flex-fill text-start">
-					<p class="mb-0">&#x1f12f; {{ entityName }} {{ fYear }}-{{ lYear }}. Game licensed under <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">MPL-2.0</a>, website <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>.</p>
+					<p class="mb-0">&copy; {{ entityName }} {{ fYear }}-{{ lYear }}. Game licensed under <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">MPL-2.0</a>, website <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>.</p>
 				</div>
 				<div class="text-end d-inline-flex justify-content-end gap-3 ms-3">
-					<a class="nav-link" href="mailto:omgkiddoesta@pm.me" title="Contact us via e-mail!"><i class="bi bi-envelope-fill"></i></a>
-					<a class="nav-link" href="https://github.com/LohinSys" title="GitHub" target="_blank"><i class="bi bi-github"></i></a>
+					<a class="nav-link" href="mailto:omgkiddoesta@pm.me" title="Contact us via e-mail!"><i class="bi bi-envelope-fill" /></a>
+					<a class="nav-link" href="https://sz5ylv1a.github.io" title="My main website"><i class="bi bi-globe" /></a>
+					<a class="nav-link" href="https://github.com/sz5ylv1a" title="GitHub" target="_blank"><i class="bi bi-github" /></a>
 				</div>
 			</div>
 		</div>

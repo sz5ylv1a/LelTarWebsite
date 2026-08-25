@@ -3,12 +3,50 @@
 		<h1><i class="bi bi-clock-history" /><span>Changelog</span></h1>
 		<p>This page contains the changelog of the game and server, documenting every possible version.</p>
 		<hr>
-		<details :open="true" id="game-0.3.0">
+		<details :open="true" id="game-0.3.1">
+			<summary class="h2">
+				<div>
+					<i class="bi bi-controller" />
+					<span>Game - v0.3.1</span>
+					<span class="badge rounded-pill text-bg-success">Latest</span>
+				</div>
+			</summary>
+			<div class="alert alert-info d-flex gap-2" role="alert">
+				<div>&#x2139;</div>
+				<div><strong>This will be the last version to support 32-bit.</strong> Future releases going forward will only be available on 64-bit systems.</div>
+			</div>
+			<ul>
+				<li>Updated Godot Engine version to 4.7.2</li>
+				<li>Add support for ARM64 on both Windows and Linux.</li>
+				<li>Tweaked the in-game background a little bit and fixed issues caused by upgrading versions</li>
+				<li>Changed the audio driver to use the platform's default instead of forcing WASAPI</li>
+				<li>Replace all LohinSys branding with sz5ylv1a (aka me!!)</li>
+				<li>Make dialog boxes more consistent with other windows and not break custom Windows 10+ themes anymore</li>
+				<li>New splash screen, replacing Godot's default and also allowing player settings to be loaded earlier on startup</li>
+				<li>New installer graphics</li>
+				<li>Redesigned credits window</li>
+				<li>Slight UI/HUD tweaks</li>
+				<li>A little bit of code cleanup</li>
+			</ul>
+		</details>
+		<details :open="true" id="api-2.0.1">
+			<summary class="h2">
+				<div>
+					<i class="bi bi-database" />
+					<span>API - v2.0.1</span>
+					<span class="badge rounded-pill text-bg-success">Latest</span>
+				</div>
+			</summary>
+			<ul>
+				<li>Updated from .NET 8.0 to .NET 10.0</li>
+				<li>Retired API v1 completely as of August 25th, 2026</li>
+			</ul>
+		</details>
+		<details id="game-0.3.0">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.3.0</span>
-					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
 			</summary>
 			<h5>This is by far the biggest update yet! Here's what we've got in store for you...</h5>
@@ -31,19 +69,17 @@
 				<li>Fix volume sliders randomly setting themselves to incorrect values</li>
 			</ul>
 		</details>
-		<details :open="true" id="api-2.0">
+		<details id="api-2.0">
 			<summary class="h2">
 				<div>
 					<i class="bi bi-database" />
 					<span>API - v2.0</span>
-					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
 			</summary>
 			<ul>
 				<li>Major security changes</li>
 				<li>An actually functional auth</li>
 				<li>A way better structure for managing stuff like submission and account settings <em>(coming soon)</em></li>
-				<li class="mt-4">oh yeah and v1 is fully read-only now, sorry if you were using that</li>
 			</ul>
 		</details>
 		<details :open="false" id="game-0.2.13">
@@ -70,6 +106,7 @@
 					<i class="bi bi-database" />
 					<span>API - v1.0</span>
 					<span class="badge rounded-pill text-bg-warning">Deprecated</span>
+					<span class="badge rounded-pill text-bg-danger">Retired</span>
 				</div>
 			</summary>
 			<ul>
