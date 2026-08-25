@@ -1,16 +1,16 @@
 {
 	"win_ins": {
-		"x64": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
-		"arm": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
-		"x86": "0123456789abcdeffedcba98765432100123456789abcdeffedcba9876543210"
+		"x64": "(Temporarily unavailable until 0.3.1)",
+		"arm": "(Temporarily unavailable until 0.3.1)",
+		"x86": "(Temporarily unavailable until 0.3.1)"
 	},
 	"win_bin": {
-		"x64": "a816ffbc93bc925c2549493f806fbc4c315d4cc5c72829c3ed2f8db491c611e1",
-		"arm": "16b69ac5b999edbe495ac0ab8a9b6cc425cfe6d46ffb72b39186f7942df27c52",
-		"x86": "92b871ca616be77352ba121049141382f791e9854dc9b6bd907cb0a4eef9bdbd"
+		"x64": "(Temporarily unavailable until 0.3.1)",
+		"arm": "(Temporarily unavailable until 0.3.1)",
+		"x86": "(Temporarily unavailable until 0.3.1)"
 	},
 	"linux": {
-		"x64": "c64d0853a63c464c3cb7babcec2bf54fee6a83bc1c62f96efe2913dc8cd1ef1c",
-		"arm": "17f04825bfb3ca265dc37e233fd5e08f1cd59ff353a51964de2168a9848a73fa"
+		"x64": "(Temporarily unavailable until 0.3.1)",
+		"arm": "(Temporarily unavailable until 0.3.1)"
 	}
 }

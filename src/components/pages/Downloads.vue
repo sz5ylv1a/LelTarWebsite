@@ -30,7 +30,7 @@ fetchFromReleases(checksumsDotJson, checksum.value);
 <template>
 	<div class="container-xxl">
 		<h1><i class="bi bi-download" /><span>Downloads</span></h1>
-		<p>This download page is for all possible downloads. Make sure you pick the right platform and CPU architecture.</p>
+		<p>This download page is for all possible downloads. Make sure you pick the right platform and CPU architecture. <span class="text-secondary"><em>(ARM64 builds are coming soon!)</em></span></p>
 		<div class="alert alert-info d-flex gap-2" role="alert">
 			<div>&#x2139;</div>
 			<div><strong>This game is currently in a very unfinished state!!</strong> If you have any high expectations about this, don't expect anything good, nor should you spam and complain in my inbox about that.</div>
@@ -55,13 +55,13 @@ fetchFromReleases(checksumsDotJson, checksum.value);
 			<li>Executable: <code v-if="checksum.length != 0">{{ checksum[0].win_bin.x64 }}</code><code class="placeholder-wave" v-else><span class="placeholder col-5"></span></code></li>
 		</ul>
 		<div class="d-flex gap-1 mb-1">
-			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarUserSetupARM64.exe" role="button" class="btn btn-success">
+			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarUserSetupARM64.exe" role="button" class="btn btn-success disabled">
 				<i class="bi bi-filetype-exe" /> <span>Installer (ARM64, .exe)</span>
 			</a>
-			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableARM64.zip" role="button" class="btn btn-outline-success">
+			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableARM64.zip" role="button" class="btn btn-outline-success disabled">
 				<i class="bi bi-archive" /> <span>Portable (ARM64, .zip)</span>
 			</a>
-			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableARM64.tar.gz" role="button" class="btn btn-outline-success">
+			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGamePortableARM64.tar.gz" role="button" class="btn btn-outline-success disabled">
 				<i class="bi bi-archive" /> <span>Portable (ARM64, .tar.gz)</span>
 			</a>
 		</div>
@@ -98,7 +98,7 @@ fetchFromReleases(checksumsDotJson, checksum.value);
 			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGame-linux.tar.gz" role="button" class="btn btn-success">
 				<i class="bi bi-archive" /> <span>Portable (x64, .tar.gz)</span>
 			</a>
-			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGame-linux.tar.gz" role="button" class="btn btn-success">
+			<a href="https://github.com/LohinSys/LelTarGame/releases/latest/download/LelTarGame-linux.tar.gz" role="button" class="btn btn-success disabled">
 				<i class="bi bi-archive" /> <span>Portable (ARM64, .tar.gz)</span>
 			</a>
 			<a href="" role="button" class="btn btn-outline-success disabled" title="This distribution channel is coming soon.">
