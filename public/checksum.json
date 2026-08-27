@@ -1,16 +1,16 @@
 {
 	"win_ins": {
-		"x64": "8561e06f978e4cf27197d8d583a7175788b4987895d5b289fc098363de735d0e",
-		"arm": "(Temporarily unavailable until 0.3.1)",
-		"x86": "93487d1bf96cd10ded6f8a9e07dfaf910a47adf17bbccc957ecc6d8ce1ea5777"
+		"x64": "ae04802ceb3bc1cfb18bda184213dd4da45d168d86dfed677639221ad9a20b33",
+		"arm": "33fcd310066bb2e2989c8a465dccd68291d9918bae8822ff51e2bac7e597f422",
+		"x86": "1286aad84930b9a4812ba2250ba98a529a58787a66c97810c3db4131361be687"
 	},
 	"win_bin": {
-		"x64": "3d0539252af0b823559307b9c602bea2f6592fd1a570cc02a455707074c3cac1",
-		"arm": "(Temporarily unavailable until 0.3.1)",
-		"x86": "ef43a9dcf4bc847665143cbcddf7faaa2639ecfdff7ff07b6b010beeead4ea46"
+		"x64": "a816ffbc93bc925c2549493f806fbc4c315d4cc5c72829c3ed2f8db491c611e1",
+		"arm": "16b69ac5b999edbe495ac0ab8a9b6cc425cfe6d46ffb72b39186f7942df27c52",
+		"x86": "92b871ca616be77352ba121049141382f791e9854dc9b6bd907cb0a4eef9bdbd"
 	},
 	"linux": {
-		"x64": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
-		"arm": "(Temporarily unavailable until 0.3.1)"
+		"x64": "a8007fce152a7679b4071af788a6e0a754586ce7ea395d3e771737c0f72e6d88",
+		"arm": "0670de73bca9e01fc7ce6572d1079ca11aab14d34c460a7563cb627fb05ad1e0"
 	}
 }

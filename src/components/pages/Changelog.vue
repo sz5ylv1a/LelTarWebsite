@@ -8,7 +8,7 @@
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.3.1</span>
-					<span class="badge rounded-pill text-bg-secondary">Upcoming</span>
+					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
 			</summary>
 			<div class="alert alert-info d-flex gap-2" role="alert">
@@ -47,7 +47,6 @@
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.3.0</span>
-					<span class="badge rounded-pill text-bg-success">Latest</span>
 				</div>
 			</summary>
 			<h5>This is by far the biggest update yet! Here's what we've got in store for you...</h5>
@@ -132,6 +131,7 @@
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.2.12</span>
+					<span class="badge rounded-pill text-bg-secondary">Unavailable</span>
 				</div>
 			</summary>
 			<ul>
@@ -145,6 +145,7 @@
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.0.2.8</span>
+					<span class="badge rounded-pill text-bg-secondary">Unavailable</span>
 				</div>
 			</summary>
 			<ul>
@@ -163,6 +164,7 @@
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.0.2.7</span>
+					<span class="badge rounded-pill text-bg-secondary">Unavailable</span>
 				</div>
 			</summary>
 			<ul>
@@ -176,6 +178,7 @@
 				<div>
 					<i class="bi bi-controller" />
 					<span>Game - v0.0.2.2</span>
+					<span class="badge rounded-pill text-bg-secondary">Unavailable</span>
 				</div>
 			</summary>
 			<ul>
