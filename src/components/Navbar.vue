@@ -49,7 +49,7 @@ async function logoff() {
 						<ul class="dropdown-menu dropdown-menu-end">
 							<li><router-link class="dropdown-item" :to="base+'profile'"><i class="bi bi-person-fill" /> Profile</router-link></li>
 							<li><router-link class="dropdown-item disabled" :to="base+'stats'"><i class="bi bi-graph-up" /> Statistics</router-link></li>
-							<li><router-link class="dropdown-item" :to="base+'settings'"><i class="bi bi-sliders2" /> Settings</router-link></li>
+							<li><router-link class="dropdown-item disabled" :to="base+'settings'"><i class="bi bi-sliders2" /> Settings</router-link></li>
 							<li><hr class="dropdown-divider" /></li>
 							<li><button class="dropdown-item" id="logout-btn" @click="logoff()"><i class="bi bi-box-arrow-left" /> Log out</button></li>
 						</ul>
