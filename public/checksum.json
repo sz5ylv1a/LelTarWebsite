@@ -1,16 +1,16 @@
 {
 	"win_ins": {
-		"x64": "(Temporarily unavailable until 0.3.1)",
+		"x64": "8561e06f978e4cf27197d8d583a7175788b4987895d5b289fc098363de735d0e",
 		"arm": "(Temporarily unavailable until 0.3.1)",
-		"x86": "(Temporarily unavailable until 0.3.1)"
+		"x86": "93487d1bf96cd10ded6f8a9e07dfaf910a47adf17bbccc957ecc6d8ce1ea5777"
 	},
 	"win_bin": {
-		"x64": "(Temporarily unavailable until 0.3.1)",
+		"x64": "3d0539252af0b823559307b9c602bea2f6592fd1a570cc02a455707074c3cac1",
 		"arm": "(Temporarily unavailable until 0.3.1)",
-		"x86": "(Temporarily unavailable until 0.3.1)"
+		"x86": "ef43a9dcf4bc847665143cbcddf7faaa2639ecfdff7ff07b6b010beeead4ea46"
 	},
 	"linux": {
-		"x64": "(Temporarily unavailable until 0.3.1)",
+		"x64": "3c0994716982c2f557f7738a789269074520ac0c0a3f11bb7a84a34ee96c683d",
 		"arm": "(Temporarily unavailable until 0.3.1)"
 	}
 }
