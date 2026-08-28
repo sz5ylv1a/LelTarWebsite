@@ -1,3 +1,45 @@
+<template>
+	<div class="container-xxl" v-if="!loggedIn">
+		<h1 class="text-center mb-3 d-block">Create an account</h1>
+		<form class="mb-2 needs-validation" id="registration" method="post" @submit.prevent="submit" novalidate>
+			<div class="alert alert-danger d-flex gap-2" v-if="error != null">
+				<div>❌</div>
+				<div>{{ error }}</div>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" :disabled="loading" />
+				<label for="username" class="form-label"><i class="bi bi-person-fill" /> Username</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required v-model="form.email" :disabled="loading" />
+				<label for="email" class="form-label"><i class="bi bi-at" /> E-mail</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password"
+				required v-model="form.password" :disabled="loading" />
+				<label for="password" class="form-label"><i class="bi bi-lock-fill" /> Password</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
+				placeholder="Confirm Password" required v-model="form.passwordConfirm" :disabled="loading" />
+				<label for="passwordConfirm" class="form-label"><i class="bi bi-key-fill" /> Confirm Password</label>
+			</div>
+			<div class="mb-3">
+				<div id="turnstile-container" />
+			</div>
+			<div class="text-center">
+				<input class="btn btn-success btn-lg" type="submit" value="Register" :disabled="loading">
+			</div>
+		</form>
+		<p class="no-account">Already have an account? <router-link :to="base+'login'">Log in!</router-link></p>
+	</div>
+	<div class="container-xxl text-center" v-else>
+		<h1 class="d-block">You've already logged in!</h1>
+		<p class="text-center">Logged in users cannot register new accounts.<br />You must log out or clear all cookies and data before you do it, or if you believe this is an error.</p>
+		<a href="javascript:history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
+	</div>
+</template>
+
 <script setup lang="js">
 import { ref } from 'vue';
 
@@ -14,6 +56,36 @@ registerBtnMsg = ref("Register"),
 error = ref(null),
 dat = ref(),
 responseNum = ref(0);
+
+function turnstileRender() {
+	turnstile.render("#turnstile-container", {
+		sitekey: import.meta.env.VITE_TURNSTILE_SITEKEY,
+		theme: 'dark',
+		size: 'flexible',
+		language: 'en',
+		callback: (t) => {
+			console.log("Turnstile success:", t);
+			form.value.captcha = true;
+		},
+		'error-callback': (e) => {
+			console.error("Turnstile error:", t);
+			form.value.captcha = false;
+		},
+		'expired-callback': () => {
+			console.error("Turnstile token has expired!");
+			form.value.captcha = false;
+		},
+		'timeout-callback': () => {
+			console.error("Turnstile challenge timed out!");
+			form.value.captcha = false;
+		},
+	});
+}
+try {
+	setTimeout(() => turnstileRender(), 300);
+} catch (e) {
+	console.error(e);
+}
 
 async function submit() {
 	if (form.value.password === form.value.passwordConfirm && !!form.value.captcha) {
@@ -76,51 +148,6 @@ async function submit() {
 defineProps({loggedIn: Boolean})
 </script>
 
-<template>
-	<div class="container-xxl" v-if="!loggedIn">
-		<h1 class="text-center mb-3 d-block">Create an account</h1>
-		<form class="mb-2 needs-validation" id="registration" method="post" @submit.prevent="submit" novalidate>
-			<div class="alert alert-danger d-flex gap-2" v-if="error != null">
-				<div>❌</div>
-				<div>{{ error }}</div>
-			</div>
-			<div class="form-floating mb-3">
-				<input type="text" class="form-control" id="username" name="username" placeholder="Username" required v-model="form.username" :disabled="loading" />
-				<label for="username" class="form-label"><i class="bi bi-person-fill" /> Username</label>
-			</div>
-			<div class="form-floating mb-3">
-				<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required v-model="form.email" :disabled="loading" />
-				<label for="email" class="form-label"><i class="bi bi-at" /> E-mail</label>
-			</div>
-			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="password" name="password" placeholder="Password"
-				required v-model="form.password" :disabled="loading" />
-				<label for="password" class="form-label"><i class="bi bi-lock-fill" /> Password</label>
-			</div>
-			<div class="form-floating mb-3">
-				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
-				placeholder="Confirm Password" required v-model="form.passwordConfirm" :disabled="loading" />
-				<label for="passwordConfirm" class="form-label"><i class="bi bi-key-fill" /> Confirm Password</label>
-			</div>
-			<div class="p-4 bg-body-tertiary mb-3">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" name="captcha" id="captcha" required v-model="form.captcha" :disabled="loading" />
-					<label class="form-check-label ps-3" for="captcha">I'm not a robot</label>
-				</div>
-			</div>
-			<div class="text-center">
-				<input class="btn btn-success btn-lg" type="submit" value="Register" :disabled="loading">
-			</div>
-		</form>
-		<p class="no-account">Already have an account? <router-link :to="base+'login'">Log in!</router-link></p>
-	</div>
-	<div class="container-xxl text-center" v-else>
-		<h1 class="d-block">You've already logged in!</h1>
-		<p class="text-center">Logged in users cannot register new accounts.<br />You must log out or clear all cookies and data before you do it, or if you believe this is an error.</p>
-		<a href="javascript:history.back()" class="btn btn-lg btn-outline-secondary" role="button">Go back</a>
-	</div>
-</template>
-
 <style scoped>
 form {
 	margin: auto;
@@ -131,9 +158,5 @@ form {
 	text-align: center;
 	font-style: italic;
 	opacity: 50%;
-}
-
-input#captcha {
-	scale: 2;
 }
 </style>
