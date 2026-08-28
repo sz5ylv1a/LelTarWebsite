@@ -63,7 +63,7 @@ function turnstileRender() {
 			form.value.captcha = true;
 		},
 		'error-callback': (e) => {
-			console.error("Turnstile error:", t);
+			console.error("Turnstile error:", e);
 			form.value.captcha = false;
 		},
 		'expired-callback': () => {
